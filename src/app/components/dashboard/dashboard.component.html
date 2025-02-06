@@ -1,0 +1,18 @@
+<div class="d-flex">
+    <!-- Side Menu -->
+    <app-side-menu *ngIf="showSidebar" class="side-menu"></app-side-menu>
+  
+    <!-- Botón que cubre toda la altura -->
+    <button
+      class="toggle-arrow"
+      (click)="toggleSidebar()"
+      [class.closed]="!showSidebar"
+    >
+      <i class="bi" [ngClass]="showSidebar ? 'bi bi-caret-left-fill' : 'bi bi-caret-right-fill'"></i>
+    </button>
+  
+    <div [class.content-expanded]="showSidebar" class="flex-grow-1 p-4">
+        <router-outlet />
+      </div>
+    </div>
+  

@@ -1,0 +1,109 @@
+<div class="card p-4 mb-4 shadow-sm">
+  <form [formGroup]="filtrosForm" (ngSubmit)="aplicarFiltros()">
+    <div class="row g-3 align-items-end">
+      <div class="col-md-3">
+        <label class="form-label">Nombre</label>
+        <input type="text" class="form-control" placeholder="Nombre" formControlName="nombre">
+      </div>
+      <div class="col-md-3">
+        <label class="form-label">CUIT</label>
+        <input type="text" class="form-control" placeholder="CUIT" formControlName="cuit">
+      </div>
+      <div class="col-md-3">
+        <label class="form-label">Email</label>
+        <input type="text" class="form-control" placeholder="Email" formControlName="email">
+      </div>
+      <div class="col-md-3">
+        <label class="form-label">Tipo de Contribuyente</label>
+        <select class="form-select" formControlName="tipoContribuyente">
+          <option value="">Seleccionar</option>
+          <option *ngFor="let tipo of tiposContribuyentes" [value]="tipo.nombre">
+            {{ tipo.nombre }}
+          </option>
+        </select>
+      </div>
+      <div class="col-md-3">
+        <label class="form-label">Debe</label>
+        <select class="form-select" formControlName="debe">
+          <option value="">Seleccionar</option>
+          <option value="true">Sí</option>
+          <option value="false">No</option>
+        </select>
+      </div>
+      <div class="col-md-3">
+        <label class="form-label">Activo</label>
+        <select class="form-select" formControlName="activo">
+          <option value="">Seleccionar</option>
+          <option value="true">Sí</option>
+          <option value="false">No</option>
+        </select>
+      </div>
+      <div class="col-md-3">
+        <button type="submit" class="btn btn-secondary w-100">Aplicar Filtros</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<!-- Botón para agregar cliente -->
+<div class="d-flex justify-content-end mb-3">
+  <button class="btn btn-primary" (click)="abrirModalAltaCliente()">
+    <i class="bi bi-person-plus"></i> Agregar Cliente
+  </button>
+</div>
+
+<app-spinner [isLoading]="isLoading"></app-spinner>
+
+<div class="table-responsive" *ngIf="!isLoading">
+  <table class="table table-striped table-hover align-middle">
+    <thead class="table-dark">
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Dirección</th>
+        <th>CUIT</th>
+        <th>WhatsApp</th>
+        <th>Email</th>
+        <th>Tipo Contribuyente</th>
+        <th>Provincia</th>
+        <th>Fecha Alta</th>
+        <th>Debe</th>
+        <th>Estado</th>
+        <th class="text-center">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cliente of clientesFiltrados">
+        <td>{{ cliente.clienteId }}</td>
+        <td>{{ cliente.nombre }}</td>
+        <td>{{ cliente.apellido }}</td>
+        <td>{{ cliente.direccion }}</td>
+        <td>{{ cliente.cuit }}</td>
+        <td>{{ cliente.whatsapp }}</td>
+        <td>{{ cliente.email }}</td>
+        <td>{{ cliente.tipoContribuyente?.nombre }}</td>
+        <td>{{ cliente.provincia?.nombre }}</td>
+        <td>{{ cliente.fechaAlta | date:'dd/MM/yyyy' }}</td>
+        <td>
+          <span class="badge" [ngClass]="{'bg-danger': cliente.debe, 'bg-success': !cliente.debe}">
+            {{ cliente.debe ? 'Sí' : 'No' }}
+          </span>
+        </td>
+        <td>
+          <span class="badge" [ngClass]="{'bg-success': cliente.estado, 'bg-secondary': !cliente.estado}">
+            {{ cliente.estado ? 'Activo' : 'Inactivo' }}
+          </span>
+        </td>
+        <td class="text-center">
+          <button class="btn btn-warning btn-sm me-1" (click)="editarCliente(cliente)">
+            <i class="bi bi-pencil"></i> 
+          </button>
+          <button class="btn btn-danger btn-sm" (click)="eliminarCliente(cliente.clienteId)">
+            <i class="bi bi-trash"></i> 
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

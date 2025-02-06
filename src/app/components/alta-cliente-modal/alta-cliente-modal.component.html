@@ -1,0 +1,60 @@
+<h2 class="text-center mb-4">Alta de Cliente</h2>
+<form [formGroup]="altaClienteForm" (ngSubmit)="guardarCliente()" class="p-4 border rounded shadow-sm bg-light">
+  <div class="row">
+    <div class="col-md-6 mb-3">
+      <label class="form-label">Nombre</label>
+      <input formControlName="nombre" type="text" class="form-control" required>
+    </div>
+    <div class="col-md-6 mb-3">
+      <label class="form-label">Apellido</label>
+      <input formControlName="apellido" type="text" class="form-control" required>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Dirección</label>
+    <input formControlName="direccion" type="text" class="form-control" required>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 mb-3">
+      <label class="form-label">CUIT</label>
+      <input formControlName="cuit" type="text" class="form-control" required>
+    </div>
+    <div class="col-md-6 mb-3">
+      <label class="form-label">Whatsapp</label>
+      <input formControlName="whatsapp" type="text" class="form-control" required>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Email</label>
+    <input formControlName="email" type="email" class="form-control" required>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 mb-3">
+      <label class="form-label">Tipo de Contribuyente</label>
+      <select formControlName="tipoContribuyente" class="form-select" required>
+        <option value="1">Responsable Inscripto</option>
+        <option value="Monotributista">Monotributista</option>
+        <option value="Consumidor Final">Consumidor Final</option>
+        <option value="Exento">Exento</option>
+      </select>
+    </div>
+    <div class="col-md-6 mb-3">
+      <label class="form-label">Provincia</label>
+      <input formControlName="provincia" type="text" class="form-control" required>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Fecha de Alta</label>
+    <input formControlName="fechaAlta" type="date" class="form-control" required>
+  </div>
+
+  <div class="text-center">
+    <button type="submit" class="btn btn-primary me-2">Guardar</button>
+    <button type="button" class="btn btn-secondary" (click)="cerrarModal()">Cancelar</button>
+  </div>
+</form>
