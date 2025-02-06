@@ -1,0 +1,54 @@
+/* Sidebar */
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  padding: 20px;
+  background-color: #f8f9fa;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.sidebar.hidden {
+  transform: translateX(-100%);
+}
+
+/* Nav Links */
+.nav-link {
+  color: #333;
+  padding: 10px 15px;
+  border-radius: 5px;
+  margin-bottom: 10px; /* Separación entre botones */
+  background-color: #e9ecef; /* Fondo del botón */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra del botón */
+  transition: all 0.3s ease; /* Transición para animación */
+  text-decoration: none; /* Sin subrayado */
+  display: flex;
+  align-items: center;
+}
+
+.nav-link i {
+  font-size: 1.2rem; /* Tamaño del ícono */
+  margin-right: 10px;
+}
+
+.nav-link:hover {
+  background-color: #007bff; /* Color de fondo al pasar el cursor */
+  color: white; /* Texto blanco */
+  transform: translateY(-2px); /* Efecto de elevación */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra más intensa */
+}
+
+/* Botón Activo */
+.nav-link.active {
+  background-color: #007bff; /* Fondo azul */
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Más destacada */
+}
+
+.nav-link.active:hover {
+  background-color: #0056b3; /* Color más oscuro al pasar el cursor */
+  transform: translateY(-2px);
+}
+ li {
+  margin-top: 10px;
+ }

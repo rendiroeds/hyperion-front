@@ -1,0 +1,64 @@
+<nav class="sidebar bg-light" style="width: 250px; height: 100vh; padding: 20px;">
+    <ul class="nav flex-column">
+      <!-- Botón de Gestión de Clientes -->
+      <li class="nav-item">
+        <a
+          class="nav-link d-flex align-items-center"
+          [routerLink]="['/dashboard/gestion-clientes']"
+          routerLinkActive="active"
+        >
+          <i class="bi bi-people me-2"></i>
+          <span>Gestión de Clientes</span>
+        </a>
+      </li>
+  
+      <!-- Botón de Gestor de Usuarios -->
+      <li class="nav-item">
+        <a
+          class="nav-link d-flex align-items-center"
+          [routerLink]="['/dashboard/gestion-usuarios']"
+          routerLinkActive="active"
+        >
+          <i class="bi bi-person-circle me-2"></i>
+          <span>Gestor de Usuarios</span>
+        </a>
+      </li>
+
+      <!-- Botón de Gestor de Usuarios -->
+      <li class="nav-item">
+        <a
+          class="nav-link d-flex align-items-center"
+          routerLink="/gestor-usuarios"
+          routerLinkActive="active"
+        >
+        <i class="bi bi-bank2"></i>
+          <span>Consulta de deudas</span>
+        </a>
+      </li>
+
+      <!-- Botón de Gestor de Usuarios -->
+      <li class="nav-item">
+        <a
+          class="nav-link d-flex align-items-center"
+          routerLink="/gestor-usuarios"
+          routerLinkActive="active"
+        >
+        <i class="bi bi-filetype-pdf"></i>
+          <span>Escaneo de PDFs</span>
+        </a>
+      </li>
+
+      <!-- Botón de Gestor de Usuarios -->
+      <li class="nav-item">
+        <a
+          class="nav-link d-flex align-items-center"
+          routerLink="/gestor-usuarios"
+          routerLinkActive="active"
+        >
+        <i class="bi bi-sticky"></i>
+          <span>Escaneo de Tickets</span>
+        </a>
+      </li>
+  
+    </ul>
+  </nav>
