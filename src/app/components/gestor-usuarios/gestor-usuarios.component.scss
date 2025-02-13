@@ -1,0 +1,17 @@
+.table th,
+.table td {
+  vertical-align: middle;
+}
+
+.btn {
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+}
+
+.card {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
