@@ -1,3 +1,4 @@
+<app-modal-alerta *ngIf="showAlert" [message]="alertMessage" [type]="alertType" [dismissible]="true"></app-modal-alerta>
 <h2 class="text-center mb-4">Alta de Cliente</h2>
 <form [formGroup]="altaClienteForm" (ngSubmit)="guardarCliente()" class="p-4 border rounded shadow-sm bg-light">
   <div class="row">
