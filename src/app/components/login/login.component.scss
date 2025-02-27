@@ -1,98 +1,211 @@
-/* General styles */
+/* Estilos generales para el cuerpo de la página */
 body {
-    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
-    font-family: 'Arial', sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-  }
-  
-  .login-container {
-    background: white;
-    max-width: 400px;
-    width: 100%;
-    margin: 0 auto;
-    margin-top: 50px;
-    padding: 40px;
-    border-radius: 12px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  
-    &:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    font-family: 'Montserrat', sans-serif; /* Establece la fuente Montserrat para todo el cuerpo */
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%); /* Fondo con un degradado */
+    display: flex; /* Utiliza flexbox para centrar el contenido */
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    height: 100vh; /* Altura completa de la ventana */
+    margin: 0; /* Elimina márgenes por defecto */
+}
+
+/* Contenedor principal para el login */
+.login-container {
+    display: flex; /* Utiliza flexbox para organizar el contenido */
+    height: 100vh; /* Altura completa de la ventana */
+    background-color: black; /* Fondo negro para el contenedor */
+
+    /* Sección para el logo */
+    .logo {
+        flex: 1; /* Ocupa el espacio disponible */
+        display: flex; /* Utiliza flexbox para centrar el logo */
+        align-items: center; /* Centra verticalmente */
+        justify-content: center; /* Centra horizontalmente */
+        color: white; /* Color del texto */
+        font-family: 'Montserrat', sans-serif; /* Establece la fuente Montserrat */
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Sombra suave para el texto */
     }
-  }
-  
-  /* Title */
-  h2 {
-    text-align: center;
-    color: #333;
-    font-size: 1.8em;
-    margin-bottom: 20px;
-  }
-  
-  /* Form elements */
-  .form-group {
-    margin-bottom: 20px;
-  
+
+    /* Sección para el formulario de inicio de sesión */
+    .login-form {
+        flex: 1; /* Ocupa el espacio disponible */
+        display: flex; /* Utiliza flexbox para organizar el contenido */
+        flex-direction: column; /* Organiza los elementos en columna */
+        align-items: center; /* Centra horizontalmente */
+        justify-content: center; /* Centra verticalmente */
+        background-color: white; /* Fondo blanco para el formulario */
+        padding: 20px; /* Espaciado interno */
+
+        /* Estilo para las etiquetas de los campos */
+        .form-label {
+            margin: 0; /* Elimina márgenes */
+            color: #007bff; /* Color azul para las etiquetas */
+            text-transform: uppercase; /* Convierte el texto a mayúsculas */
+        }
+
+        /* Estilo para los campos de entrada */
+        input {
+            margin-top: 5px; /* Margen superior */
+            margin-bottom: 30px; /* Margen inferior */
+            padding: 15px; /* Espaciado interno */
+            width: 300px; /* Ancho fijo para los campos */
+            background-color: rgba(108, 117, 125, 0.1); /* Fondo con opacidad */
+            border: 1px solid #ccc; /* Borde gris claro */
+            border-radius: 10px; /* Bordes redondeados */
+            font-size: 1em; /* Tamaño de fuente */
+            transition: background-color 0.3s ease, border-color 0.3s ease; /* Transición suave para cambios de color */
+
+            &:focus {
+                background-color: rgba(90, 98, 104, 0.1); /* Fondo al enfocar */
+                border-color: #007bff; /* Color del borde al enfocar */
+            }
+        }
+
+        /* Estilo para el botón de enviar */
+        button {
+            margin: 10px 0; /* Margen vertical */
+            padding: 10px; /* Espaciado interno */
+            width: 100%; /* Ancho completo */
+            background-color: #007bff; /* Color del botón */
+            color: white; /* Color del texto */
+            border: none; /* Sin borde */
+            border-radius: 20px; /* Bordes redondeados */
+            cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+            text-transform: lowercase; /* Texto en minúsculas */
+            display: flex; /* Utiliza flexbox para centrar el texto */
+            align-items: center; /* Centra verticalmente */
+            justify-content: center; /* Centra horizontalmente */
+
+            &:hover {
+                background-color: #0056b3; /* Color más oscuro al pasar el mouse */
+            }
+
+            &:disabled {
+                background-color: #cccccc; /* Color gris cuando está deshabilitado */
+                cursor: not-allowed; /* Cambia el cursor para indicar que está deshabilitado */
+            }
+        }
+
+        /* Estilo para el enlace de contraseña olvidada */
+        .forgot-password {
+            margin-top: 10px; /* Margen superior */
+            color: #007bff; /* Color azul para el enlace */
+            text-decoration: none; /* Sin subrayado */
+            font-size: 0.75em; /* Tamaño de letra más pequeño */
+
+            &:hover {
+                text-decoration: underline; /* Subrayado al pasar el mouse */
+            }
+        }
+    }
+}
+
+/* Estilo para el título */
+h2 {
+    text-align: center; /* Centra el texto */
+    color: #333; /* Color del texto */
+    font-size: 1.8em; /* Tamaño de letra */
+    margin-bottom: 20px; /* Margen inferior */
+}
+
+/* Estilo para los elementos del formulario */
+.form-group {
+    margin-bottom: 20px; /* Margen inferior */
+
     label {
-      display: block;
-      margin-bottom: 8px;
-      color: #555;
-      font-weight: bold;
+        display: block; /* Muestra la etiqueta como bloque */
+        margin-bottom: 8px; /* Margen inferior */
+        color: #555; /* Color del texto */
+        font-weight: bold; /* Texto en negrita */
     }
-  
+
     input {
-      width: 100%;
-      padding: 12px;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      box-sizing: border-box;
-      font-size: 1em;
-      outline: none;
-      transition: border-color 0.3s ease;
-  
-      &:focus {
-        border-color: #2575fc;
-      }
+        width: 100%; /* Ancho completo */
+        padding: 12px; /* Espaciado interno */
+        border: 1px solid #ddd; /* Borde gris claro */
+        border-radius: 8px; /* Bordes redondeados */
+        box-sizing: border-box; /* Incluye el padding y el borde en el ancho total */
+        font-size: 1em; /* Tamaño de fuente */
+        outline: none; /* Sin contorno al enfocar */
+        transition: border-color 0.3s ease; /* Transición suave para el borde */
+
+        &:focus {
+            border-color: #2575fc; /* Color del borde al enfocar */
+        }
     }
-  }
-  
-  .error {
-    color: red;
-    font-size: 0.9em;
-    margin-top: 5px;
-  }
-  
-  /* Submit button */
-  button {
-    width: 100%;
-    padding: 12px;
-    background-color: #2575fc;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 1.1em;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  
+}
+
+/* Estilo para mensajes de error */
+.error {
+    color: red; /* Color rojo para el texto de error */
+    font-size: 0.9em; /* Tamaño de letra */
+    margin-top: 5px; /* Margen superior */
+}
+
+/* Estilo para el botón de envío */
+button {
+    width: 100%; /* Ancho completo */
+    padding: 12px; /* Espaciado interno */
+    background-color: #2575fc; /* Color del botón */
+    color: white; /* Color del texto */
+    border: none; /* Sin borde */
+    border-radius: 8px; /* Bordes redondeados */
+    font-size: 1.1em; /* Tamaño de letra */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    transition: background-color 0.3s ease; /* Transición suave para el color de fondo */
+
     &:hover {
-      background-color: #6a11cb;
+        background-color: #6a11cb; /* Color más oscuro al pasar el mouse */
     }
-  
+
     &:disabled {
-      background-color: #ccc;
-      cursor: not-allowed;
+        background-color: #ccc; /* Color gris cuando está deshabilitado */
+        cursor: not-allowed; /* Cambia el cursor para indicar que está deshabilitado */
     }
-  }
-  
-  /* Error message container */
-  .error {
-    text-align: center;
-    font-size: 1.1em;
-    margin-top: 20px;
-  }
+}
+
+/* Estilo para el contenedor de mensajes de error */
+.error {
+    text-align: center; /* Centra el texto */
+    font-size: 1.1em; /* Tamaño de letra */
+    margin-top: 20px; /* Margen superior */
+}
+
+/* Estilo para el contenedor fluido */
+.container-fluid {
+    height: 100vh; /* Altura completa de la ventana */
+}
+
+/* Estilo para el fondo oscuro */
+.bg-dark {
+    background-color: #000; /* Color negro */
+}
+
+/* Estilo para el fondo blanco */
+.bg-white {
+    background-color: #fff; /* Color blanco */
+}
+
+/* Estilo para el logo */
+.logo {
+    max-width: 100%; /* Ancho máximo del logo */
+    height: auto; /* Altura automática para mantener la proporción */
+}
+
+/* Estilo para la tarjeta */
+.card {
+    background-color: #fff; /* Color blanco */
+    border-radius: 10px; /* Bordes redondeados */
+}
+
+/* Estilo para el botón primario */
+.btn-primary {
+    background-color: #007bff; /* Color azul */
+    border: none; /* Sin borde */
+}
+
+/* Estilo para el texto atenuado */
+.text-muted {
+    color: #6c757d; /* Color gris */
+}
   
