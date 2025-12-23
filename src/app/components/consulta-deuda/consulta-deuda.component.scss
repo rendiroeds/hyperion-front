@@ -1,0 +1,44 @@
+/* ========== Hero bicolor y titulo ========== */
+.clients-hero {
+  background: linear-gradient(180deg, #000 0%, #000 55%, #f2f0eb 55%, #f2f0eb 100%);
+  padding: 24px 32px 32px;
+  min-height: 240px;
+}
+
+.hero-inner {
+  max-width: 835px;
+  width: auto;
+  margin: 0 auto;
+}
+
+.clients-title {
+  color: #fff;
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin: 8px 0 20px;
+  text-align: left;
+}
+
+/* ========== Card de aviso ========== */
+.upcoming-card {
+  background: #fff;
+  border: 1px solid #e4e4e4;
+  border-radius: 16px;
+  padding: 18px 22px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  display: inline-block;
+  margin-top: 16px;
+}
+
+.upcoming-text {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: #1a73e8;
+}
+
+/* ========== Fondo inferior ========== */
+.clients-body {
+  background: #f2f0eb;
+  min-height: 200px;
+}

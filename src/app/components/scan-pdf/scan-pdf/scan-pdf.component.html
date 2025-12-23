@@ -1,23 +1,30 @@
-<div class="container mt-5">
-    <div class="card shadow-lg p-4">
-      <h2 class="text-center mb-4">Subir Archivo PDF</h2>
-      
-      <div class="text-center">
-        <label for="fileInput" class="btn btn-primary btn-lg">
-          <i class="bi bi-upload"></i> Seleccionar PDF
-        </label>
-        <input type="file" id="fileInput" class="d-none" (change)="onFileSelected($event)" />
-      </div>
-  
-      <div *ngIf="fileName" class="text-center mt-3">
-        <p class="fw-bold">Archivo seleccionado: <span class="text-success">{{ fileName }}</span></p>
-      </div>
-  
-      <div class="text-center mt-4">
-        <button class="btn btn-success btn-lg" [disabled]="!fileSelected" (click)="uploadFile()">
-          <i class="bi bi-file-earmark-arrow-down"></i> Procesar y Descargar
-        </button>
+<div class="clients-hero">
+  <div class="hero-inner">
+    <h1 class="clients-title">PDFs</h1>
+    <div class="filters-card">
+      <div class="row g-3 align-items-end mx-0">
+        <div class="col-auto">
+          <label class="form-label">Subir Archivo PDF</label>
+          <div class="upload-actions">
+            <label for="fileInput" class="btn btn-primary filter-btn">
+              <i class="bi bi-upload"></i> Seleccionar PDF
+            </label>
+            <input type="file" id="fileInput" class="d-none" (change)="onFileSelected($event)" />
+            <button class="btn btn-success filter-btn apply-btn" [disabled]="!fileSelected" (click)="uploadFile()">
+              <i class="bi bi-file-earmark-arrow-down"></i> Procesar y Descargar
+            </button>
+          </div>
+          <div *ngIf="fileName" class="selected-file d-flex align-items-center flex-wrap gap-2">
+            <span>Archivo seleccionado:</span>
+            <span class="file-name">{{ fileName }}</span>
+            <button type="button" class="btn btn-outline-danger btn-sm clear-btn" (click)="clearSelection()" aria-label="Borrar archivo">
+              &times;
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-  
+</div>
+
+<div class="clients-body"></div>
