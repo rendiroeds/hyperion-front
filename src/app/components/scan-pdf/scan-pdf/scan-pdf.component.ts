@@ -22,6 +22,11 @@ export class ScanPdfComponent {
     }
   }
 
+  clearSelection() {
+    this.fileSelected = null;
+    this.fileName = '';
+  }
+
   uploadFile() {
     if (this.fileSelected) {
       this.imageService.uploadPdf(this.fileSelected).subscribe(response => {

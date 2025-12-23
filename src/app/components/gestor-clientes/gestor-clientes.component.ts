@@ -17,6 +17,8 @@ export class GestorClientesComponent implements OnInit {
   clientes: any[] = [];
   clientesFiltrados: any[] = [];
   isLoading: boolean = true;
+  sortField: string | null = null;
+  sortDirection: 'asc' | 'desc' = 'asc';
 
   filtrosForm: FormGroup;
   tiposContribuyentes: any[] = [];
@@ -45,6 +47,7 @@ export class GestorClientesComponent implements OnInit {
       next: (clientes) => {
         this.clientes = clientes;
         this.clientesFiltrados = clientes;
+        this.applySort();
         this.isLoading = false;
       },
       error: (err) => {
@@ -79,6 +82,129 @@ export class GestorClientesComponent implements OnInit {
         (filtros.activo === '' || cliente.estado === (filtros.activo === 'true'))
       );
     });
+    this.applySort();
+  }
+
+  sortBy(field: string): void {
+    if (this.sortField === field) {
+      this.sortDirection = this.sortDirection === 'asc' ? 'desc' : 'asc';
+    } else {
+      this.sortField = field;
+      this.sortDirection = 'asc';
+    }
+    this.applySort();
+  }
+
+  private applySort(): void {
+    if (!this.sortField) {
+      return;
+    }
+    const direction = this.sortDirection === 'asc' ? 1 : -1;
+    this.clientesFiltrados = [...this.clientesFiltrados].sort((a, b) => {
+      const valA = this.getFieldValue(a, this.sortField!);
+      const valB = this.getFieldValue(b, this.sortField!);
+      if (valA == null && valB == null) return 0;
+      if (valA == null) return -1 * direction;
+      if (valB == null) return 1 * direction;
+      if (typeof valA === 'number' && typeof valB === 'number') {
+        return (valA - valB) * direction;
+      }
+      const strA = String(valA).toLowerCase();
+      const strB = String(valB).toLowerCase();
+      if (strA < strB) return -1 * direction;
+      if (strA > strB) return 1 * direction;
+      return 0;
+    });
+  }
+
+  private getFieldValue(item: any, field: string): any {
+    switch (field) {
+      case 'nombre':
+      case 'apellido':
+      case 'direccion':
+      case 'cuit':
+      case 'whatsapp':
+      case 'email':
+      case 'fechaAlta':
+        return item[field];
+      case 'clienteId':
+        return item.clienteId;
+      case 'tipoContribuyente':
+        return item.tipoContribuyente?.nombre;
+      case 'provincia':
+        return item.provincia?.nombre;
+      case 'debe':
+        return item.debe;
+      case 'estado':
+        return item.estado;
+      default:
+        return item[field];
+    }
+  }
+
+  exportPdf(): void {
+    // TODO: implementar exportación a PDF
+  }
+
+  exportCsv(): void {
+    if (!this.clientesFiltrados?.length) {
+      return;
+    }
+    const headers = [
+      'ID',
+      'Nombre',
+      'Apellido',
+      'Dirección',
+      'CUIT',
+      'WhatsApp',
+      'Email',
+      'Tipo Contribuyente',
+      'Provincia',
+      'Fecha Alta',
+      'Debe',
+      'Estado'
+    ];
+    const rows = this.clientesFiltrados.map((c) => [
+      c.clienteId ?? '',
+      c.nombre ?? '',
+      c.apellido ?? '',
+      c.direccion ?? '',
+      c.cuit ?? '',
+      c.whatsapp ?? '',
+      c.email ?? '',
+      c.tipoContribuyente?.nombre ?? '',
+      c.provincia?.nombre ?? '',
+      c.fechaAlta ?? '',
+      c.debe ? 'Sí' : 'No',
+      c.estado ? 'Activo' : 'Inactivo',
+    ]);
+
+    const csvContent =
+      [headers, ...rows]
+        .map((r) => r.map((val) => `"${String(val).replace(/"/g, '""')}"`).join(','))
+        .join('\n');
+
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'clientes.csv';
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+
+  limpiarFiltros(): void {
+    this.filtrosForm.reset({
+      nombre: '',
+      dni: '',
+      cuit: '',
+      tipoContribuyente: '',
+      telefono: '',
+      email: '',
+      debe: '',
+      activo: '',
+    });
+    this.clientesFiltrados = this.clientes;
   }
 
   abrirModalAltaCliente() {

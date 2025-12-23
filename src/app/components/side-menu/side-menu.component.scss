@@ -52,3 +52,41 @@
  li {
   margin-top: 10px;
  }
+
+.logo-item {
+  margin-bottom: 14px;
+}
+
+.menu-logo {
+  width: 100%;
+  max-width: 210px;
+  display: block;
+  margin: 0 auto;
+  padding-bottom: 50px;
+}
+
+/* Footer de enlaces informativos */
+.sidebar-footer {
+  margin-top: 88px;
+  color: #1a73e8;
+  font-weight: 500;
+  font-size: 0.75rem;
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.footer-link {
+  cursor: pointer;
+  color: #1a73e8;
+  text-decoration: none;
+}
+
+.footer-link:hover {
+  color: #000;
+  text-decoration: underline;
+}
+
+.footer-separator {
+  color: #8a8a8a;
+}

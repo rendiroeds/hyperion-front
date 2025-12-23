@@ -11,8 +11,26 @@
       <i class="bi" [ngClass]="showSidebar ? 'bi bi-caret-left-fill' : 'bi bi-caret-right-fill'"></i>
     </button>
   
-    <div [class.content-expanded]="showSidebar" class="flex-grow-1 p-4">
+    <div [class.content-expanded]="showSidebar" class="flex-grow-1">
+      <header class="topbar">
+        <div class="user-menu" (click)="toggleUserMenu()">
+          <i class="bi bi-person-circle avatar"></i>
+          <span class="user-name">{{ userName }}</span>
+          <i class="bi" [ngClass]="userMenuOpen ? 'bi-caret-up-fill' : 'bi-caret-down-fill'"></i>
+        </div>
+        <div class="user-dropdown" *ngIf="userMenuOpen">
+          <div class="dropdown-label">
+            <div>{{ userName }}</div>
+            <div>DNI: {{ userDni }}</div>
+            <div>Rol: {{ userRole }}</div>
+          </div>
+          <button type="button" class="dropdown-item">Perfil</button>
+          <button type="button" class="dropdown-item">Configuración</button>
+          <button type="button" class="dropdown-item logout" (click)="logout()">Cerrar sesión</button>
+        </div>
+      </header>
+      <div class="page-content">
         <router-outlet />
       </div>
     </div>
-  
+  </div>

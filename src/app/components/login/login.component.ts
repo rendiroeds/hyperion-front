@@ -16,35 +16,74 @@ import { of } from 'rxjs';
 export class LoginComponent {
   loginForm: FormGroup;
   errorMessage: string | null = null;
-  
+  showPassword = false;
+  showRecoveryModal = false;
+  recoveryForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private router: Router, private authService: AuthService, ) {
+  constructor(private fb: FormBuilder, private router: Router, private authService: AuthService) {
     this.loginForm = this.fb.group({
       username: ['', [Validators.required]],
       password: ['', [Validators.required]],
+    });
+
+    this.recoveryForm = this.fb.group({
+      username: ['', [Validators.required]],
+    });
+
+    this.loginForm.valueChanges.subscribe(() => {
+      this.errorMessage = null;
     });
   }
 
   onSubmit(): void {
     if (this.loginForm.valid) {
       const { username, password } = this.loginForm.value;
-      this.authService.login(username, password).pipe(
-        catchError((error) => {
-          this.errorMessage = 'Usuario o contraseña inválido';
-          return of(null);
-        })
-      ).subscribe((response) => {
-        if (response?.token) {
-          // Guarda el token en sessionStorage
-          localStorage.setItem('token', response.token)
-          this.router.navigate(['/dashboard']);
-        } else {
-          this.errorMessage = 'Usuario o contraseña inválido';
-        }
-      });
+      this.authService
+        .login(username, password)
+        .pipe(
+          catchError(() => {
+            this.errorMessage =
+              'Error al iniciar: Usuario o contrase\u00f1a incorrectos, por favor verifique de nuevo.';
+            return of(null);
+          })
+        )
+        .subscribe((response) => {
+          if (response?.token) {
+            localStorage.setItem('token', response.token);
+            localStorage.setItem('username', username);
+            this.router.navigate(['/dashboard']);
+          } else {
+            this.errorMessage =
+              'Error al iniciar: Usuario o contrase\u00f1a incorrectos, por favor verifique de nuevo.';
+          }
+        });
     } else {
-      this.errorMessage = 'Usuario o contraseña inválido';
+      this.errorMessage =
+        'Error al iniciar: Usuario o contrase\u00f1a incorrectos, por favor verifique de nuevo.';
     }
   }
-  
+
+  togglePasswordVisibility(): void {
+    this.showPassword = !this.showPassword;
+  }
+
+  openRecoveryModal(event?: Event): void {
+    if (event) {
+      event.preventDefault();
+    }
+    this.recoveryForm.reset();
+    this.showRecoveryModal = true;
+  }
+
+  closeRecoveryModal(): void {
+    this.showRecoveryModal = false;
+  }
+
+  onRecover(): void {
+    if (this.recoveryForm.invalid) {
+      return;
+    }
+    // TODO: llamar a un servicio para gestionar el envío de recuperación
+    this.showRecoveryModal = false;
+  }
 }

@@ -17,6 +17,8 @@ export class GestorUsuariosComponent implements OnInit {
   usuarios: any[] = [];
   usuariosFiltrados: any[] = [];
   isLoading: boolean = true;
+  sortField: string = '';
+  sortDirection: 'asc' | 'desc' = 'asc';
 
   filtrosForm: FormGroup;
 
@@ -37,6 +39,7 @@ export class GestorUsuariosComponent implements OnInit {
       next: (usuario) => {
         this.usuarios = usuario;
         this.usuariosFiltrados = usuario;
+        this.applySort();
         this.isLoading = false;
       },
       error: (err) => {
@@ -58,6 +61,93 @@ export class GestorUsuariosComponent implements OnInit {
         (!filtros.email || usuario.email?.includes(filtros.email))
       );
     });
+
+    this.applySort();
+  }
+
+  limpiarFiltros() {
+    this.filtrosForm.reset({
+      nombre: '',
+      email: '',
+    });
+    this.usuariosFiltrados = [...this.usuarios];
+    this.applySort();
+  }
+
+  exportCsv() {
+    const header = ['ID', 'Usuario', 'Nombre', 'Apellido', 'Email', 'Rol'];
+    const rows = this.usuariosFiltrados.map((u) => [
+      u.id ?? '',
+      u.username ?? '',
+      u.firstName ?? '',
+      u.lastName ?? '',
+      u.email ?? '',
+      u.rol ?? ''
+    ]);
+
+    const csvContent = [header, ...rows]
+      .map((row) =>
+        row
+          .map((cell: string) => {
+            const safe = String(cell).replace(/"/g, '""');
+            return `"${safe}"`;
+          })
+          .join(',')
+      )
+      .join('\n');
+
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const url = window.URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'usuarios.csv';
+    link.click();
+    window.URL.revokeObjectURL(url);
+  }
+
+  sortBy(field: string) {
+    if (this.sortField === field) {
+      this.sortDirection = this.sortDirection === 'asc' ? 'desc' : 'asc';
+    } else {
+      this.sortField = field;
+      this.sortDirection = 'asc';
+    }
+    this.applySort();
+  }
+
+  private applySort() {
+    if (!this.sortField) return;
+    const direction = this.sortDirection === 'asc' ? 1 : -1;
+    this.usuariosFiltrados = [...this.usuariosFiltrados].sort((a, b) => {
+      const valA = this.getFieldValue(a, this.sortField);
+      const valB = this.getFieldValue(b, this.sortField);
+      if (valA == null && valB == null) return 0;
+      if (valA == null) return -1 * direction;
+      if (valB == null) return 1 * direction;
+      if (typeof valA === 'number' && typeof valB === 'number') {
+        return (valA - valB) * direction;
+      }
+      return String(valA).localeCompare(String(valB)) * direction;
+    });
+  }
+
+  private getFieldValue(item: any, field: string): any {
+    switch (field) {
+      case 'id':
+        return item.id;
+      case 'username':
+        return item.username;
+      case 'firstName':
+        return item.firstName;
+      case 'lastName':
+        return item.lastName;
+      case 'email':
+        return item.email;
+      case 'rol':
+        return item.rol;
+      default:
+        return item[field];
+    }
   }
 
    abrirModalAltaUsuario() {

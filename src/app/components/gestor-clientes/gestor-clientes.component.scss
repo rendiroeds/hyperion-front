@@ -1,3 +1,4 @@
+﻿/* ---------- Config globales ---------- */
 .table th,
 .table td {
   vertical-align: middle;
@@ -11,7 +12,261 @@
   transform: scale(1.05);
 }
 
-.card {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
+/* ---------- Encabezado y Fondo bicolor ---------- */
+.clients-hero {
+  background: linear-gradient(180deg, #000 0%, #000 55%, #f2f0eb 55%, #f2f0eb 100%);
+  padding: 24px 32px 32px;
+  min-height: 260px;
 }
+
+.hero-inner {
+  max-width: 835px;
+  width: auto;
+  margin: 0 auto;
+}
+
+.clients-title {
+  color: #fff;
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin: 8px 0 16px;
+  text-align: left;
+}
+
+/* ---------- DIV de filtros ---------- */
+.filters-card {
+  background: #fff;
+  border: 1px solid #e4e4e4;
+  border-radius: 16px;
+  padding: 16px 18px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  margin-top: 32px;
+  display: inline-block;
+  width: fit-content;
+  max-width: 100%;
+}
+
+.filters-card .form-label {
+  font-weight: 600;
+  color: #2f3b4c;
+}
+
+.filters-card .form-control,
+.filters-card .form-select {
+  background: #f7f8fa;
+  border-radius: 10px;
+  border: 1px solid #d8d8d8;
+  width: 100%;
+}
+
+.filters-card .filter-175 {
+  width: 175px;
+  flex: 0 0 auto;
+  max-width: 175px;
+}
+
+.filters-card .filter-260 {
+  width: 260px;
+  flex: 0 0 auto;
+  max-width: 260px;
+}
+
+.filters-card .filter-btn {
+  border-radius: 999px;
+  padding: 6px 16px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+  width: auto;
+  height: 60px;
+}
+
+.filters-card .apply-btn {
+  margin-left: 50px;
+  height: 60px;
+}
+
+/* ---------- BotÃ³n Agregar Cliente ---------- */
+.add-client-btn {
+  border-radius: 999px;
+  padding: 8px 18px;
+  font-weight: 600;
+}
+
+/* ---------- Tabla: acciones ---------- */
+.clients-table .actions-cell {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.clients-table .actions-cell .btn {
+  border-radius: 50%;
+  padding: 0;
+  width: 33px;
+  height: 33px;
+  min-width: 33px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  color: #000;
+  border: 1px solid #dcdcdc;
+  transition: all 0.15s ease-in-out;
+}
+
+.clients-table .actions-cell .btn-warning {
+  background: #fff;
+  color: #000;
+  border-color: #dcdcdc;
+
+  &:hover {
+    background: #f0ad4e !important;
+    color: #fff !important;
+    border-color: #f0ad4e !important;
+  }
+}
+
+.clients-table .actions-cell .btn-danger {
+  background: #fff;
+  color: #000;
+  border-color: #dcdcdc;
+
+  &:hover {
+    background: #d9534f !important;
+    color: #fff !important;
+    border-color: #d9534f !important;
+  }
+}
+
+/* ---------- Cuerpo ---------- */
+.clients-body {
+  background: #f2f0eb;
+  padding: 16px 32px 32px;
+}
+
+/* ---------- Tarjeta de tabla ---------- */
+.table-card {
+  background: #fff;
+  border: 1px solid #e4e4e4;
+  border-radius: 16px;
+  padding: 12px 14px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+/* ---------- Tabla ---------- */
+.clients-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: #fff;
+
+  thead th {
+    background: #fff;
+    color: #222;
+    font-weight: 700;
+    font-size: 14px;
+    padding: 12px 10px;
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  thead th:first-child {
+    border-top-left-radius: 12px;
+  }
+
+  thead th:last-child {
+    border-top-right-radius: 12px;
+  }
+
+  tbody td {
+    background: #f7f8fa;
+    font-size: 14px;
+    padding: 12px 10px;
+    border-bottom: 1px solid #f1f1f4;
+  }
+
+  tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  tbody tr:hover {
+    background: #f8faff;
+  }
+}
+
+.clients-table .sortable {
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.clients-table .sortable .bi {
+  margin-left: 4px;
+  font-size: 12px;
+  color: #8f95a3;
+}
+
+.clients-table .sortable .bi-caret-up-fill,
+.clients-table .sortable .bi-caret-down-fill {
+  color: #1a73e8;
+}
+
+/* ---------- Footer de tabla: contador y botones ---------- */
+.table-footer-actions {
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 4px 2px;
+}
+
+.table-buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.table-btn {
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+}
+
+.table-btn-pdf {
+  background: #fff;
+  color: #d9534f;
+  border: 1px solid #d9534f;
+
+  &:hover {
+    background: #d9534f;
+    color: #fff;
+  }
+}
+
+.table-btn-csv {
+  background: #fff;
+  color: #0f9d58;
+  border: 1px solid #0f9d58;
+
+  &:hover {
+    background: #0f9d58;
+    color: #fff;
+  }
+}
+
+.table-btn-new {
+  background: #fff;
+  color: #1a73e8;
+  border: 1px solid #1a73e8;
+
+  &:hover {
+    background: #1a73e8;
+    color: #fff;
+  }
+}
+
