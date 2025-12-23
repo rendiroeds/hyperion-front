@@ -1,0 +1,77 @@
+﻿<!-- Este es el contenedor principal del formulario de inicio de sesi&oacute;n -->
+<div class="login-container">
+  <div class="logo">
+    <img src="/assets/hyperion-logo.jpg" alt="Logo de Hyperion" />
+  </div>
+  <div class="login-form">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="error-banner" *ngIf="errorMessage">{{ errorMessage }}</div>
+      <div class="mb-3">
+        <label for="username" class="form-label">Usuario</label>
+        <input
+          id="username"
+          type="text"
+          class="form-control"
+          formControlName="username"
+          placeholder="Ingresa tu usuario"
+          [ngClass]="{ 'input-error': errorMessage }"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Contrase&ntilde;a</label>
+        <div class="input-group password-group">
+          <input
+            id="password"
+            [type]="showPassword ? 'text' : 'password'"
+            class="form-control"
+            formControlName="password"
+            placeholder="Ingresa tu contrase&ntilde;a"
+            [ngClass]="{ 'input-error': errorMessage }"
+          />
+          <button
+            type="button"
+            class="btn btn-eye"
+            (click)="togglePasswordVisibility()"
+            [attr.aria-label]="showPassword ? 'Ocultar contrase&ntilde;a' : 'Mostrar contrase&ntilde;a'"
+          >
+            <i class="bi" [ngClass]="showPassword ? 'bi-eye-slash' : 'bi-eye'"></i>
+          </button>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary w-100" [disabled]="loginForm.invalid" style="margin-top: 10px;">
+        Ingresar
+      </button>
+      <div class="text-center mt-3">
+        <a href="#" class="forgot-password" (click)="openRecoveryModal($event)">OLVID&Eacute; MI CONTRASE&Ntilde;A</a>
+      </div>
+    </form>
+  </div>
+
+  <!-- Modal de recuperaci&oacute;n de contrase&ntilde;a -->
+  <div class="modal-overlay" *ngIf="showRecoveryModal">
+    <div class="modal-box">
+      <button type="button" class="close-btn" (click)="closeRecoveryModal()">&times;</button>
+      <div class="modal-header">
+        <i class="bi bi-people"></i>
+        <span>Recuperar Contrase&ntilde;a</span>
+      </div>
+      <form [formGroup]="recoveryForm" (ngSubmit)="onRecover()">
+        <label for="recovery-username" class="modal-label">Usuario</label>
+        <input
+          id="recovery-username"
+          type="text"
+          class="modal-input"
+          formControlName="username"
+          placeholder="Ingresa tu usuario"
+        />
+        <p class="modal-info">
+          Escriba su nombre de usuario, luego click en el bot&oacute;n "Enviar" para que se le env&iacute;e un mail con su nueva contrase&ntilde;a al correo vinculado a su cuenta.
+        </p>
+        <div class="modal-actions">
+          <button type="button" class="btn-cancel" (click)="closeRecoveryModal()">Cancelar</button>
+          <button type="submit" class="btn-submit" [disabled]="recoveryForm.invalid">Enviar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

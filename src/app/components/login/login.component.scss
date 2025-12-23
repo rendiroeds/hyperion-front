@@ -1,0 +1,431 @@
+/* Estilos generales para el cuerpo de la página */
+body {
+    font-family: 'Montserrat', sans-serif; /* Establece la fuente Montserrat para todo el cuerpo */
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%); /* Fondo con un degradado */
+    display: flex; /* Utiliza flexbox para centrar el contenido */
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    height: 100vh; /* Altura completa de la ventana */
+    margin: 0; /* Elimina márgenes por defecto */
+}
+
+/* Contenedor principal para el login */
+.login-container {
+    display: flex; /* Utiliza flexbox para organizar el contenido */
+    height: 100vh; /* Altura completa de la ventana */
+    background-color: black; /* Fondo negro para el contenedor */
+
+    /* Sección para el logo */
+    .logo {
+        flex: 2; /* Ocupa 2/3 del ancho */
+        display: flex; /* Utiliza flexbox para centrar el logo */
+        align-items: center; /* Centra verticalmente */
+        justify-content: center; /* Centra horizontalmente */
+        color: white; /* Color del texto */
+        font-family: 'Montserrat', sans-serif; /* Establece la fuente Montserrat */
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Sombra suave para el texto */
+    }
+
+    /* Sección para el formulario de inicio de sesión */
+    .login-form {
+        flex: 1; /* Ocupa 1/3 del ancho */
+        display: flex; /* Utiliza flexbox para organizar el contenido */
+        flex-direction: column; /* Organiza los elementos en columna */
+        align-items: center; /* Centra horizontalmente */
+        justify-content: center; /* Centra verticalmente */
+        background-color: #f2f0eb; /* Fondo blanco para el formulario */
+        padding: 20px; /* Espaciado interno */
+
+        /* Estilo para las etiquetas de los campos */
+        .form-label {
+            margin: 0; /* Elimina márgenes */
+            color: #007bff; /* Color azul para las etiquetas */
+            text-transform: uppercase; /* Convierte el texto a mayúsculas */
+        }
+
+        /* Estilo para los campos de entrada */
+        input {
+            margin-top: 10px; /* Margen superior */
+            margin-bottom: 30px; /* Margen inferior */
+            padding: 15px; /* Espaciado interno */
+            width: 300px; /* Ancho fijo para los campos */
+            height: 50px; /* Altura fija para alinear con el botón de ojo */
+            background-color: rgba(108, 117, 125, 0.1); /* Fondo con opacidad */
+            border: 1px solid #ccc; /* Borde gris claro */
+            border-radius: 10px; /* Bordes redondeados */
+            font-size: 1em; /* Tamaño de fuente */
+            transition: background-color 0.3s ease, border-color 0.3s ease; /* Transición suave para cambios de color */
+
+            &:focus {
+                background-color: rgba(90, 98, 104, 0.1); /* Fondo al enfocar */
+                border-color: #007bff; /* Color del borde al enfocar */
+            }
+        }
+
+        .password-group {
+            display: flex;
+            align-items: stretch;
+            width: 300px;
+
+            .form-control {
+                flex: 1;
+                min-width: 0;
+                width: auto;
+                height: 50px;
+                border-radius: 10px 0 0 10px;
+            }
+
+            .btn-eye {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 50px;
+                height: 50px;
+                margin-left: 5px;
+                border-radius: 0 10px 10px 0;
+                border: 1.25px solid #007bff;
+                background-color: #007bff;
+                color: #fff;
+                padding: 0;
+                font-size: 16px;
+
+                &:hover {
+                    background-color: #0056b3;
+                    color: #fff;
+                }
+
+                &:focus {
+                    box-shadow: none;
+                }
+            }
+        }
+
+        /* Estilo para el botón de enviar */
+        button {
+            margin: 10px 0; /* Margen vertical */
+            padding: 10px; /* Espaciado interno */
+            width: 100%; /* Ancho completo */
+            background-color: #007bff; /* Color del botón */
+            color: white; /* Color del texto */
+            border: none; /* Sin borde */
+            border-radius: 20px; /* Bordes redondeados */
+            cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+            text-transform: lowercase; /* Texto en minúsculas */
+            display: flex; /* Utiliza flexbox para centrar el texto */
+            align-items: center; /* Centra verticalmente */
+            justify-content: center; /* Centra horizontalmente */
+
+            &:hover {
+                background-color: #0056b3; /* Color más oscuro al pasar el mouse */
+            }
+
+            &:disabled {
+                background-color: #cccccc; /* Color gris cuando está deshabilitado */
+                cursor: not-allowed; /* Cambia el cursor para indicar que está deshabilitado */
+            }
+        }
+
+        /* Estilo para el enlace de contraseña olvidada */
+        .forgot-password {
+            margin-top: 10px; /* Margen superior */
+            color: #007bff; /* Color azul para el enlace */
+            text-decoration: none; /* Sin subrayado */
+            font-size: 0.75em; /* Tamaño de letra más pequeño */
+
+            &:hover {
+                text-decoration: underline; /* Subrayado al pasar el mouse */
+            }
+        }
+    }
+}
+
+/* Estilo para el título */
+h2 {
+    text-align: center; /* Centra el texto */
+    color: #333; /* Color del texto */
+    font-size: 1.8em; /* Tamaño de letra */
+    margin-bottom: 20px; /* Margen inferior */
+}
+
+/* Estilo para los elementos del formulario */
+.form-group {
+    margin-bottom: 20px; /* Margen inferior */
+
+    label {
+        display: block; /* Muestra la etiqueta como bloque */
+        margin-bottom: 8px; /* Margen inferior */
+        color: #555; /* Color del texto */
+        font-weight: bold; /* Texto en negrita */
+    }
+
+    input {
+        width: 100%; /* Ancho completo */
+        padding: 12px; /* Espaciado interno */
+        border: 1px solid #ddd; /* Borde gris claro */
+        border-radius: 8px; /* Bordes redondeados */
+        box-sizing: border-box; /* Incluye el padding y el borde en el ancho total */
+        font-size: 1em; /* Tamaño de fuente */
+        outline: none; /* Sin contorno al enfocar */
+        transition: border-color 0.3s ease; /* Transición suave para el borde */
+
+        &:focus {
+            border-color: #2575fc; /* Color del borde al enfocar */
+        }
+    }
+}
+
+/* Estilo para mensajes de error */
+.error {
+    color: red; /* Color rojo para el texto de error */
+    font-size: 0.9em; /* Tamaño de letra */
+    margin-top: 5px; /* Margen superior */
+}
+
+/* Estilo para el botón de envío */
+button {
+    width: 100%; /* Ancho completo */
+    padding: 12px; /* Espaciado interno */
+    background-color: #2575fc; /* Color del botón */
+    color: white; /* Color del texto */
+    border: none; /* Sin borde */
+    border-radius: 8px; /* Bordes redondeados */
+    font-size: 1.1em; /* Tamaño de letra */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    transition: background-color 0.3s ease; /* Transición suave para el color de fondo */
+
+    &:hover {
+        background-color: #6a11cb; /* Color más oscuro al pasar el mouse */
+    }
+
+    &:disabled {
+        background-color: #ccc; /* Color gris cuando está deshabilitado */
+        cursor: not-allowed; /* Cambia el cursor para indicar que está deshabilitado */
+    }
+}
+
+/* Estilo para el contenedor de mensajes de error */
+.error {
+    text-align: center; /* Centra el texto */
+    font-size: 1.1em; /* Tamaño de letra */
+    margin-top: 20px; /* Margen superior */
+}
+
+/* Estilo para el contenedor fluido */
+.container-fluid {
+    height: 100vh; /* Altura completa de la ventana */
+}
+
+/* Estilo para el fondo oscuro */
+.bg-dark {
+    background-color: #000; /* Color negro */
+}
+
+/* Estilo para el fondo blanco */
+.bg-white {
+    background-color: #fff; /* Color blanco */
+}
+
+/* Estilo para el logo */
+.logo {
+    max-width: 100%; /* Ancho máximo del logo */
+    height: auto; /* Altura automática para mantener la proporción */
+}
+
+/* Estilo para la tarjeta */
+.card {
+    background-color: #fff; /* Color blanco */
+    border-radius: 10px; /* Bordes redondeados */
+}
+
+/* Estilo para el botón primario */
+.btn-primary {
+    background-color: #007bff; /* Color azul */
+    border: none; /* Sin borde */
+}
+
+/* Estilo para el texto atenuado */
+.text-muted {
+    color: #6c757d; /* Color gris */
+}
+ 
+.login-container .logo img {
+    width: 700px;
+    height: 400px;
+    object-fit: contain;
+    display: block;
+}
+
+.error-banner {
+    width: 300px;
+    margin: 0 auto 12px auto;
+    padding: 10px 12px;
+    border: 1px solid #f5c6cb;
+    border-radius: 10px;
+    background: #fdecea;
+    color: #c0392b;
+    font-size: 0.9rem;
+    line-height: 1.3;
+    text-align: left;
+}
+
+.input-error {
+    border-color: #e74c3c !important;
+    box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.15);
+}
+
+/* Modal de recuperación */
+.forgot-password {
+    background: none;
+    border: none;
+    color: #1c48c8;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    padding: 0;
+    text-decoration: none;
+    display: inline-block;
+    text-transform: uppercase;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    z-index: 1000;
+}
+
+.modal-box {
+    position: relative;
+    background: #fff;
+    width: 90%;
+    max-width: 520px;
+    border-radius: 18px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+    padding: 24px 24px 28px;
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1c6ef2;
+    margin-bottom: 16px;
+}
+
+.modal-label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #2c3e50;
+}
+
+.modal-input {
+    width: 100%;
+    height: 50px;
+    border-radius: 12px;
+    border: 1px solid #e0e0e0;
+    background: #f5f6f8;
+    padding: 12px 14px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+    &:focus {
+        border-color: #1c6ef2;
+        box-shadow: 0 0 0 3px rgba(28, 110, 242, 0.15);
+    }
+}
+
+.modal-info {
+    margin: 14px 0 18px;
+    font-size: 0.95rem;
+    color: #34495e;
+    line-height: 1.4;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    margin-top: 8px;
+}
+
+.btn-cancel,
+.btn-submit {
+    min-width: 140px;
+    height: 46px;
+    border: none;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+
+    &:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 12px 22px rgba(0, 0, 0, 0.16);
+    }
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(28, 110, 242, 0.25);
+    }
+}
+
+.btn-cancel {
+    background: #fff;
+    color: #e74c3c;
+    border: 1px solid #f4d6d3;
+
+    &:hover {
+        background: #e74c3c;
+        color: #fff;
+    }
+}
+
+.btn-submit {
+    background: #00c6a7;
+    color: #fff;
+    border: none;
+
+    &:hover {
+        background: #fff;
+        color: #00c6a7;
+        border: 1px solid #00c6a7;
+    }
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #e74c3c;
+    color: #fff;
+    border: none;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+
+    &:hover {
+        background: #c0392b;
+        color: #fff;
+    }
+}

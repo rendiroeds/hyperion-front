@@ -1,0 +1,75 @@
+﻿<nav class="sidebar bg-light" style="width: 250px; height: 100vh; padding: 20px;">
+    <ul class="nav flex-column">
+      <li class="nav-item logo-item">
+        <img src="/assets/hyperion-logo.jpg" alt="Hyperion" class="menu-logo" />
+      </li>
+      <!-- Botón de Gestión de Clientes -->
+      <li class="nav-item">
+        <a
+          class="nav-link d-flex align-items-center"
+          [routerLink]="['/dashboard/gestion-clientes']"
+          routerLinkActive="active"
+        >
+          <i class="bi bi-people me-2"></i>
+          <span>Gestión de Clientes</span>
+        </a>
+      </li>
+  
+      <!-- Botón de Gestor de Usuarios -->
+      <li class="nav-item">
+        <a
+          class="nav-link d-flex align-items-center"
+          [routerLink]="['/dashboard/gestion-usuarios']"
+          routerLinkActive="active"
+        >
+          <i class="bi bi-person-circle me-2"></i>
+          <span>Gestor de Usuarios</span>
+        </a>
+      </li>
+
+      <!-- Botón de Gestor de Usuarios -->
+      <li class="nav-item">
+        <a
+          class="nav-link d-flex align-items-center"
+          [routerLink]="['/dashboard/consulta-deuda']"
+          routerLinkActive="active"
+        >
+        <i class="bi bi-bank2"></i>
+          <span>Consulta de deudas</span>
+        </a>
+      </li>
+
+      <!-- Botón de Gestor de Usuarios -->
+      <li class="nav-item">
+        <a
+          class="nav-link d-flex align-items-center"
+          [routerLink]="['/dashboard/carga-pdf']"
+          routerLinkActive="active"
+        >
+        <i class="bi bi-filetype-pdf"></i>
+          <span>Escaneo de PDFs</span>
+        </a>
+      </li>
+
+      <!-- Botón de Gestor de Usuarios -->
+      <li class="nav-item">
+        <a
+          class="nav-link d-flex align-items-center"
+          [routerLink]="['/dashboard/escaneo-tickets']"
+          routerLinkActive="active"
+        >
+        <i class="bi bi-sticky"></i>
+          <span>Escaneo de Tickets</span>
+        </a>
+      </li>
+
+    </ul>
+
+    <div class="sidebar-footer">
+      <span class="footer-link">FAQ</span>
+      <span class="footer-separator">|</span>
+      <span class="footer-link">¿Quienes Somos?</span>
+      <span class="footer-separator">|</span>
+      <span class="footer-link">Contactanos</span>
+    </div>
+  </nav>

@@ -1,0 +1,7 @@
+.toast {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1050; /* Asegúrate de que esté por encima de otros elementos */
+    min-width: 250px;
+  }

@@ -1,0 +1,9 @@
+<div *ngIf="visible" class="toast show" [ngClass]="{'bg-success': type === 'success', 'bg-danger': type === 'error'}" role="alert" aria-live="assertive" aria-atomic="true">
+  <div class="toast-header">
+    <strong class="me-auto">{{ type === 'success' ? 'Éxito' : 'Error' }}</strong>
+    <button *ngIf="dismissible" type="button" class="btn-close" (click)="hide()" aria-label="Close"></button>
+  </div>
+  <div class="toast-body">
+    {{ message }}
+  </div>
+</div>

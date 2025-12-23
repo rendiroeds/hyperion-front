@@ -1,0 +1,153 @@
+﻿/* Side Menu */
+.side-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100vh;
+    background-color: #f8f9fa;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease; /* Transici?n suave */
+    z-index: 1100;
+  }
+  
+  /* BotÃ³n de flecha */
+  .toggle-arrow {
+    position: fixed;
+    top: 0;
+    left: 250px; /* Se alinea al borde del sidemenu */
+    width: 20px; /* Ancho del botÃ³n */
+    height: 100vh; /* Altura completa */
+    background-color: #bebebe; /* Fondo */
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1050; /* Sobre el sidemenu */
+    transition: left 0.3s ease; /* TransiciÃ³n suave para moverse */
+    box-shadow: 1px 0 8px rgba(0, 0, 0, 0.8); /* Sombra para el botÃ³n */
+  }
+  
+  /* Cambiar posiciÃ³n cuando estÃ¡ cerrado */
+  .toggle-arrow.closed {
+    left: 0; /* BotÃ³n al borde izquierdo cuando el menÃº estÃ¡ cerrado */
+  }
+  
+  /* Iconos */
+  .toggle-arrow i {
+    font-size: 1.5rem; /* TamaÃ±o del Ã­cono */
+  }
+  
+/* Contenido principal con margen dinÃ¡mico */
+.content-expanded {
+    margin-left: 250px; /* Cuando el menÃº estÃ¡ abierto */
+    transition: margin-left 0.3s ease;
+}
+
+.content-expanded:not(.content-expanded) {
+    margin-left: 0; /* Cuando el menÃº estÃ¡ cerrado */
+}
+
+/* Estilo del Ã­cono */
+.bi {
+    color: #f8f9fa;
+}
+
+.topbar {
+    position: relative;
+    height: 58px;
+    background: #f8f9fa;
+    border-bottom: 1px solid #e0e0e0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    z-index: 2;
+}
+
+.page-content {
+    background: #f2f0eb;
+    min-height: calc(100vh - 58px);
+    padding: 0;
+}
+
+.user-menu {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 12px;
+    transition: background 0.2s ease;
+
+    &:hover {
+        background: #eef1f5;
+    }
+
+    .avatar {
+        font-size: 1.5rem;
+        color: #7a7a7a;
+    }
+
+    .user-name {
+        color: #4a4a4a;
+        font-weight: 500;
+    }
+
+    .bi {
+        color: #7a7a7a;
+    }
+}
+
+.user-dropdown {
+    position: absolute;
+    top: 58px;
+    right: 16px;
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    display: flex;
+    flex-direction: column;
+    min-width: 180px;
+    overflow: hidden;
+    z-index: 20;
+}
+
+.dropdown-label {
+    padding: 12px 14px 8px;
+    border-bottom: 1px solid #e0e0e0;
+    color: #4a4a4a;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+.dropdown-item {
+    padding: 10px 14px;
+    text-align: left;
+    background: none;
+    border: none;
+    width: 100%;
+    color: #4a4a4a;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background 0.15s ease, color 0.15s ease;
+
+    &:hover {
+        background: #eef1f5;
+    }
+
+    &.logout {
+        color: #d9534f;
+
+        &:hover {
+            background: #ffecec;
+        }
+    }
+}
+  
+
+
+
