@@ -7,6 +7,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ScanPdfComponent } from './components/scan-pdf/scan-pdf/scan-pdf.component';
 import { ConsultaDeudaComponent } from './components/consulta-deuda/consulta-deuda.component';
 import { EscaneoTicketsComponent } from './components/escaneo-tickets/escaneo-tickets.component';
+import { ScanTicketComponent } from './components/scan-ticket/scan-ticket/scan-ticket.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -20,8 +22,9 @@ export const routes: Routes = [
       { path: 'consulta-deuda', component: ConsultaDeudaComponent },
       { path: 'escaneo-tickets', component: EscaneoTicketsComponent },
       { path: 'carga-pdf', component: ScanPdfComponent },
+      { path: 'scan-ticket', component: ScanTicketComponent },
       // Puedes agregar más rutas hijas aquí si es necesario
     ]
   },
-  { path: '**', redirectTo: 'dashboard' },
+  { path: '**', component: NotFoundComponent },
 ];

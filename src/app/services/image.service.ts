@@ -34,4 +34,21 @@ export class ImageService {
       headers: headers
     });
   }
+
+  uploadTicket(file: File) {
+    const formData = new FormData();
+    formData.append('image', file);
+  
+    const token = localStorage.getItem('token'); // Obtener el token guardado
+  
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`, // Agregar el token en el encabezado
+      Accept: 'text/plain' // Indica que el backend devuelve un .txt
+    });
+
+    return this.http.post('http://localhost:8080/images/tickets', formData, {
+      responseType: 'blob',
+      headers: headers
+    });
+  }
 }
