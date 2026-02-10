@@ -1,17 +1,13 @@
-node_modules/
+
+*.js
+/.angular/cache
+/node_modules
 
 .angular/
 
 package.json
 
 package-lock.json
-package-lock.json
 node_modules/.package-lock.json
-/node_modules
-*.js
-*.js
-/node_modules
-/node_modules/xhr2
-node_modules/wrap-ansi-cjs/node_modules/emoji-regex/LICENSE-MIT.txt
 node_modules/wrap-ansi-cjs/node_modules/emoji-regex/LICENSE-MIT.txt
 *.json
