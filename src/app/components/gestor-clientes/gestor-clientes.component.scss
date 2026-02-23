@@ -1,4 +1,4 @@
-﻿/* ---------- Config globales ---------- */
+/* Estilos base */
 .table th,
 .table td {
   vertical-align: middle;
@@ -12,28 +12,38 @@
   transform: scale(1.05);
 }
 
-/* ---------- Encabezado y Fondo bicolor ---------- */
+/* Fondo general y layout de la cabecera */
 .clients-hero {
   background: linear-gradient(180deg, #000 0%, #000 55%, #f2f0eb 55%, #f2f0eb 100%);
   padding: 24px 32px 32px;
   min-height: 260px;
 }
 
+/* Contenedor que limita el ancho de toda la cabecera */
 .hero-inner {
-  max-width: 835px;
+  max-width: 1320px;
   width: auto;
   margin: 0 auto;
 }
 
+/* Titulo "Clientes" alineado con el inicio del card de filtros */
 .clients-title {
   color: #fff;
   font-size: 1.6rem;
   font-weight: 700;
-  margin: 8px 0 16px;
+  margin: 8px auto 16px;
   text-align: left;
+  width: 890px;
+  max-width: 100%;
 }
 
-/* ---------- DIV de filtros ---------- */
+.clients-body {
+  background: #f2f0eb;
+  padding: 16px 32px 32px;
+}
+
+/* Filtros (card, campos y botones) */
+/* Card principal que envuelve el formulario de filtros */
 .filters-card {
   background: #fff;
   border: 1px solid #e4e4e4;
@@ -41,9 +51,11 @@
   padding: 16px 18px;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
   margin-top: 32px;
-  display: inline-block;
-  width: fit-content;
+  display: block;
+  width: 890px;
   max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .filters-card .form-label {
@@ -51,6 +63,7 @@
   color: #2f3b4c;
 }
 
+/* Estilo base de los inputs del formulario */
 .filters-card .form-control,
 .filters-card .form-select {
   background: #f7f8fa;
@@ -59,18 +72,24 @@
   width: 100%;
 }
 
-.filters-card .filter-175 {
-  width: 175px;
+/* Anchos de columnas de filtros */
+.filters-card .field-cuit,
+.filters-card .field-debe,
+.filters-card .field-activo {
+  width: 215px;
   flex: 0 0 auto;
-  max-width: 175px;
+  max-width: 215px;
 }
 
-.filters-card .filter-260 {
+.filters-card .field-email,
+.filters-card .field-tipo-contribuyente {
   width: 260px;
   flex: 0 0 auto;
   max-width: 260px;
 }
 
+/* Botones dentro de filtros */
+/* Estilo comun para "Limpiar filtros" y "Aplicar Filtros" */
 .filters-card .filter-btn {
   border-radius: 999px;
   padding: 6px 16px;
@@ -81,82 +100,32 @@
   height: 60px;
 }
 
+/* Ajustes puntuales del boton "Aplicar Filtros" */
 .filters-card .apply-btn {
-  margin-left: 50px;
+  margin-left: 0;
+  margin-top: 0;
   height: 60px;
 }
 
-/* ---------- BotÃ³n Agregar Cliente ---------- */
-.add-client-btn {
-  border-radius: 999px;
-  padding: 8px 18px;
-  font-weight: 600;
+/* Wrapper del boton aplicar para eliminar relleno vertical extra */
+.filters-card .apply-filters-wrapper {
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
-/* ---------- Tabla: acciones ---------- */
-.clients-table .actions-cell {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-}
-
-.clients-table .actions-cell .btn {
-  border-radius: 50%;
-  padding: 0;
-  width: 33px;
-  height: 33px;
-  min-width: 33px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #fff;
-  color: #000;
-  border: 1px solid #dcdcdc;
-  transition: all 0.15s ease-in-out;
-}
-
-.clients-table .actions-cell .btn-warning {
-  background: #fff;
-  color: #000;
-  border-color: #dcdcdc;
-
-  &:hover {
-    background: #f0ad4e !important;
-    color: #fff !important;
-    border-color: #f0ad4e !important;
-  }
-}
-
-.clients-table .actions-cell .btn-danger {
-  background: #fff;
-  color: #000;
-  border-color: #dcdcdc;
-
-  &:hover {
-    background: #d9534f !important;
-    color: #fff !important;
-    border-color: #d9534f !important;
-  }
-}
-
-/* ---------- Cuerpo ---------- */
-.clients-body {
-  background: #f2f0eb;
-  padding: 16px 32px 32px;
-}
-
-/* ---------- Tarjeta de tabla ---------- */
+/* Tabla de clientes */
+/* Card contenedor de la tabla y footer */
 .table-card {
   background: #fff;
   border: 1px solid #e4e4e4;
   border-radius: 16px;
   padding: 12px 14px;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  max-width: 1320px;
+  margin: 0 auto;
 }
 
-/* ---------- Tabla ---------- */
+/* Tabla principal de clientes */
 .clients-table {
   width: 100%;
   border-collapse: separate;
@@ -196,6 +165,7 @@
   }
 }
 
+/* Encabezados ordenables */
 .clients-table .sortable {
   cursor: pointer;
   white-space: nowrap;
@@ -212,7 +182,58 @@
   color: #1a73e8;
 }
 
-/* ---------- Footer de tabla: contador y botones ---------- */
+/* Acciones por fila (editar / eliminar) */
+.clients-table .actions-cell {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.clients-table .actions-cell .btn {
+  border-radius: 50%;
+  padding: 0;
+  width: 33px;
+  height: 33px;
+  min-width: 33px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  color: #000;
+  border: 1px solid #dcdcdc;
+  transition: all 0.15s ease-in-out;
+}
+
+/* Boton editar */
+.clients-table .actions-cell .btn-warning {
+  background: #fff;
+  color: #000;
+  border-color: #dcdcdc;
+
+  &:hover {
+    background: #f0ad4e !important;
+    color: #fff !important;
+    border-color: #f0ad4e !important;
+  }
+}
+
+/* Boton eliminar */
+.clients-table .actions-cell .btn-danger {
+  background: #fff;
+  color: #000;
+  border-color: #dcdcdc;
+
+  &:hover {
+    background: #d9534f !important;
+    color: #fff !important;
+    border-color: #d9534f !important;
+  }
+}
+
+/* Footer de tabla (contador + acciones) */
+/* Contenedor del contador y botones inferiores */
 .table-footer-actions {
   margin-top: 12px;
   display: flex;
@@ -223,12 +244,14 @@
   padding: 4px 2px;
 }
 
+/* Grupo de botones del footer */
 .table-buttons {
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
 }
 
+/* Estilo comun de botones del footer */
 .table-btn {
   border-radius: 999px;
   padding: 6px 14px;
@@ -237,6 +260,7 @@
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
 }
 
+/* Variante PDF */
 .table-btn-pdf {
   background: #fff;
   color: #d9534f;
@@ -248,6 +272,7 @@
   }
 }
 
+/* Variante CSV */
 .table-btn-csv {
   background: #fff;
   color: #0f9d58;
@@ -259,6 +284,7 @@
   }
 }
 
+/* Variante Nuevo Cliente */
 .table-btn-new {
   background: #fff;
   color: #1a73e8;
@@ -269,4 +295,3 @@
     color: #fff;
   }
 }
-

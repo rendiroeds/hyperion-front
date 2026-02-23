@@ -8,18 +8,21 @@
             <label class="form-label">Nombre</label>
             <input type="text" class="form-control" placeholder="Nombre" formControlName="nombre">
           </div>
-          <div class="col-auto filter-175">
+          <div class="col-auto field-cuit">
             <label class="form-label">CUIT</label>
             <input type="text" class="form-control" placeholder="CUIT" formControlName="cuit">
           </div>
-          <div class="col-auto filter-260">
+          <div class="col-auto field-email">
             <label class="form-label">Email</label>
             <input type="text" class="form-control" placeholder="Email" formControlName="email">
           </div>
-          <div class="col-auto d-flex align-items-end">
+          <div class="col-auto ms-auto d-flex align-items-end">
             <button type="button" class="btn btn-secondary filter-btn" (click)="limpiarFiltros()">Limpiar filtros</button>
           </div>
-          <div class="col-auto filter-260">
+        </div>
+
+        <div class="row g-3 align-items-end mx-0 mt-0">
+          <div class="col-auto field-tipo-contribuyente">
             <label class="form-label">Tipo de Contribuyente</label>
             <select class="form-select" formControlName="tipoContribuyente">
               <option value="">Seleccionar</option>
@@ -28,7 +31,7 @@
               </option>
             </select>
           </div>
-          <div class="col-auto filter-175">
+          <div class="col-auto field-debe">
             <label class="form-label">Debe</label>
             <select class="form-select" formControlName="debe">
               <option value="">Seleccionar</option>
@@ -36,7 +39,7 @@
               <option value="false">No</option>
             </select>
           </div>
-          <div class="col-auto filter-175">
+          <div class="col-auto field-activo">
             <label class="form-label">Activo</label>
             <select class="form-select" formControlName="activo">
               <option value="">Seleccionar</option>
@@ -44,7 +47,7 @@
               <option value="false">No</option>
             </select>
           </div>
-          <div class="col-auto d-flex align-items-end">
+          <div class="col-auto ms-auto d-flex align-items-start align-self-start apply-filters-wrapper">
             <button type="submit" class="btn btn-primary filter-btn apply-btn">Aplicar Filtros</button>
           </div>
         </div>

@@ -45,6 +45,10 @@
     transition: margin-left 0.3s ease;
 }
 
+.d-flex > .flex-grow-1 {
+    min-width: 0;
+}
+
 .content-expanded:not(.content-expanded) {
     margin-left: 0; /* Cuando el menÃº estÃ¡ cerrado */
 }

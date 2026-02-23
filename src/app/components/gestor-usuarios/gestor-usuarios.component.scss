@@ -1,4 +1,4 @@
-/* ========== Configuracion general ========== */
+/* Estilos base */
 .table th,
 .table td {
   vertical-align: middle;
@@ -12,19 +12,21 @@
   transform: scale(1.05);
 }
 
-/* ========== Hero bicolor y titulo ========== */
+/* Fondo general y layout de la cabecera */
 .clients-hero {
   background: linear-gradient(180deg, #000 0%, #000 55%, #f2f0eb 55%, #f2f0eb 100%);
   padding: 24px 32px 32px;
   min-height: 260px;
 }
 
+/* Contenedor centrado que limita el ancho de la cabecera */
 .hero-inner {
   max-width: 835px;
   width: auto;
   margin: 0 auto;
 }
 
+/* Titulo principal de la pantalla */
 .clients-title {
   color: #fff;
   font-size: 1.6rem;
@@ -33,7 +35,14 @@
   text-align: left;
 }
 
-/* ========== Div de filtros ========== */
+/* Fondo de la zona de contenido */
+.clients-body {
+  background: #f2f0eb;
+  padding: 16px 32px 32px;
+}
+
+/* Filtros (card, campos y botones) */
+/* Card principal que envuelve el formulario */
 .filters-card {
   background: #fff;
   border: 1px solid #e4e4e4;
@@ -51,6 +60,7 @@
   color: #2f3b4c;
 }
 
+/* Estilo base de los inputs del formulario */
 .filters-card .form-control,
 .filters-card .form-select {
   background: #f7f8fa;
@@ -59,18 +69,21 @@
   width: 100%;
 }
 
-.filters-card .filter-175 {
-  width: 175px;
-  flex: 0 0 auto;
-  max-width: 175px;
-}
-
-.filters-card .filter-260 {
+/* Anchos de columnas de filtros */
+.filters-card .field-nombre,
+.filters-card .field-email {
   width: 260px;
   flex: 0 0 auto;
   max-width: 260px;
 }
 
+/* Contenedor de acciones del formulario */
+.filters-card .filters-actions {
+  min-width: 210px;
+}
+
+/* Botones dentro de filtros */
+/* Estilo comun para "Limpiar filtros" y "Aplicar Filtros" */
 .filters-card .filter-btn {
   border-radius: 999px;
   padding: 6px 16px;
@@ -81,18 +94,15 @@
   height: 60px;
 }
 
+/* Ajustes puntuales del boton "Aplicar Filtros" */
 .filters-card .apply-btn {
   margin-left: 0;
   margin-top: 4px;
   height: 60px;
 }
 
-/* ========== Fondo y contenedor de tabla ========== */
-.clients-body {
-  background: #f2f0eb;
-  padding: 16px 32px 32px;
-}
-
+/* Tabla de usuarios */
+/* Card contenedor de la tabla y footer */
 .table-card {
   background: #fff;
   border: 1px solid #e4e4e4;
@@ -101,7 +111,7 @@
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
 }
 
-/* ========== Tabla y acciones ========== */
+/* Tabla principal de usuarios */
 .clients-table {
   width: 100%;
   border-collapse: separate;
@@ -141,6 +151,7 @@
   }
 }
 
+/* Encabezados ordenables */
 .clients-table .sortable {
   cursor: pointer;
   white-space: nowrap;
@@ -157,6 +168,7 @@
   color: #1a73e8;
 }
 
+/* Acciones por fila (editar / eliminar) */
 .clients-table .actions-cell {
   display: flex;
   flex-direction: column;
@@ -180,6 +192,7 @@
   transition: all 0.15s ease-in-out;
 }
 
+/* Boton editar */
 .clients-table .actions-cell .btn-warning {
   background: #fff;
   color: #000;
@@ -192,6 +205,7 @@
   }
 }
 
+/* Boton eliminar */
 .clients-table .actions-cell .btn-danger {
   background: #fff;
   color: #000;
@@ -204,7 +218,8 @@
   }
 }
 
-/* ========== Footer de tabla: contador y botones ========== */
+/* Footer de tabla (contador + acciones) */
+/* Contenedor del contador y botones inferiores */
 .table-footer-actions {
   margin-top: 12px;
   display: flex;
@@ -215,12 +230,14 @@
   padding: 4px 2px;
 }
 
+/* Grupo de botones del footer */
 .table-buttons {
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
 }
 
+/* Estilo comun de botones del footer */
 .table-btn {
   border-radius: 999px;
   padding: 6px 14px;
@@ -229,6 +246,7 @@
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
 }
 
+/* Variante CSV */
 .table-btn-csv {
   background: #fff;
   color: #0f9d58;
@@ -240,6 +258,7 @@
   }
 }
 
+/* Variante Nuevo Usuario */
 .table-btn-new {
   background: #fff;
   color: #1a73e8;

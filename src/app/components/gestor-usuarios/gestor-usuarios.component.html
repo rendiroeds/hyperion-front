@@ -4,15 +4,15 @@
     <div class="filters-card">
       <form [formGroup]="filtrosForm" (ngSubmit)="aplicarFiltros()">
         <div class="row g-3 align-items-end mx-0">
-          <div class="col-auto filter-260 align-self-center">
+          <div class="col-auto field-nombre align-self-center">
             <label class="form-label">Nombre</label>
             <input type="text" class="form-control" placeholder="Nombre" formControlName="nombre">
           </div>
-          <div class="col-auto filter-260 align-self-center">
+          <div class="col-auto field-email align-self-center">
             <label class="form-label">Email</label>
             <input type="text" class="form-control" placeholder="Email" formControlName="email">
           </div>
-          <div class="col-auto d-flex flex-column align-items-end gap-2">
+          <div class="col-auto filters-actions d-flex flex-column align-items-end gap-2">
             <button type="button" class="btn btn-secondary filter-btn" (click)="limpiarFiltros()">Limpiar filtros</button>
             <button type="submit" class="btn btn-primary filter-btn apply-btn">Aplicar Filtros</button>
           </div>

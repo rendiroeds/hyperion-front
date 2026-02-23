@@ -1,0 +1,209 @@
+/* Fondo general de la pagina */
+.about-us-page {
+  background: #f2f0eb;
+  min-height: calc(100vh - 58px);
+}
+
+/* Hero superior con fondo amarillo y curva inferior */
+.about-us-hero {
+  background: #ffd301;
+  position: relative;
+  overflow: hidden;
+  padding: 46px 28px 110px;
+}
+
+.about-us-hero::after {
+  content: '';
+  position: absolute;
+  left: -8%;
+  right: -8%;
+  bottom: -120px;
+  height: 210px;
+  background: #f2f0eb;
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+}
+
+/* Contenedor principal del hero */
+.about-us-hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 980px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+}
+
+/* Bloque de texto superior */
+.about-us-intro {
+  max-width: 560px;
+}
+
+.about-us-title {
+  margin: 0;
+  color: #1f2430;
+  font-size: clamp(2rem, 3.2vw, 3.1rem);
+  line-height: 1.04;
+  font-weight: 800;
+}
+
+.about-us-description {
+  margin-top: 14px;
+  color: #2f3a4c;
+  font-size: 0.98rem;
+  line-height: 1.5;
+  max-width: 560px;
+}
+
+/* Orb decorativo del hero */
+.about-us-orb {
+  width: min(34vw, 280px);
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #ff9c2b 0%, #ff7a12 62%, #ef6600 100%);
+  position: relative;
+  box-shadow: 26px 12px 0 #ff8c13;
+  flex-shrink: 0;
+}
+
+.about-us-orb-face {
+  position: absolute;
+  top: 18%;
+  left: 21%;
+  display: flex;
+  gap: 8px;
+}
+
+.about-us-orb-face span {
+  width: 14px;
+  height: 7px;
+  border: 3px solid #273043;
+  border-top: 0;
+  border-radius: 0 0 11px 11px;
+  transform: rotate(-16deg);
+}
+
+/* Seccion inferior con fotos y bloque central */
+.about-us-content {
+  position: relative;
+  z-index: 1;
+  max-width: 1240px;
+  margin: -20px auto 0;
+  padding: 0 24px 28px;
+}
+
+.about-us-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: 24px;
+  align-items: stretch;
+}
+
+/* Tarjetas laterales de perfil (foto + firma) */
+.about-us-profile-card {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+}
+
+.about-us-photo-frame {
+  width: 390px;
+  height: 270px;
+  position: relative;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-us-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+}
+
+.about-us-photo-frame-left,
+.about-us-photo-frame-right {
+  border-radius: 0;
+}
+
+.about-us-signature {
+  width: min(290px, 92%);
+  height: auto;
+  display: block;
+  object-fit: contain;
+  margin-top: -10px;
+}
+
+/* Tarjeta central de contenido */
+.about-us-info-card {
+  background: #fff;
+  border-radius: 16px;
+  border: 1px solid #ececec;
+  box-shadow: 0 7px 20px rgba(0, 0, 0, 0.08);
+  padding: 18px 16px;
+}
+
+.about-us-info-card h2 {
+  margin: 0 0 8px;
+  font-size: 1rem;
+  font-weight: 800;
+  color: #20293a;
+}
+
+.about-us-info-card p {
+  margin: 0;
+  color: #4b5567;
+  font-size: 0.93rem;
+  line-height: 1.45;
+}
+
+.about-us-role-block {
+  margin-top: 22px;
+}
+
+.about-us-role-name {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 800;
+  color: #20293a;
+}
+
+.about-us-role-title {
+  margin: 4px 0 8px;
+  color: #1a73e8;
+  font-size: 0.9rem;
+  font-weight: 700;
+  font-style: italic;
+}
+
+/* Ajustes responsive */
+@media (max-width: 900px) {
+  .about-us-hero-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .about-us-orb {
+    width: min(55vw, 240px);
+    align-self: center;
+  }
+
+  .about-us-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-us-photo-frame {
+    width: min(90vw, 410px);
+    height: min(62vw, 290px);
+  }
+}
