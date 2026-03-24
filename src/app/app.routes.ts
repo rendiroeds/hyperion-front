@@ -9,8 +9,10 @@ import { ConsultaDeudaComponent } from './components/consulta-deuda/consulta-deu
 import { EscaneoTicketsComponent } from './components/escaneo-tickets/escaneo-tickets.component';
 import { ScanTicketComponent } from './components/scan-ticket/scan-ticket/scan-ticket.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { HomeRedirectComponent } from './components/home-redirect/home-redirect.component';
 
 export const routes: Routes = [
+  { path: '', component: HomeRedirectComponent },
   { path: 'login', component: LoginComponent },
   {
     path: 'dashboard',
