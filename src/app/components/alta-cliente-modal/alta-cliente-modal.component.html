@@ -2,46 +2,24 @@
 <h2 class="text-center mb-4">Alta de Cliente</h2>
 <form [formGroup]="altaClienteForm" (ngSubmit)="guardarCliente()" class="p-4 border rounded shadow-sm bg-light">
   <div class="row">
-    <div class="col-md-6 mb-3">
+    <div class="col-md-4 mb-3">
       <label class="form-label">Nombre</label>
       <input formControlName="nombre" type="text" class="form-control" required>
     </div>
-    <div class="col-md-6 mb-3">
+    <div class="col-md-4 mb-3">
       <label class="form-label">Apellido</label>
       <input formControlName="apellido" type="text" class="form-control" required>
     </div>
-  </div>
-
-  <div class="mb-3">
-    <label class="form-label">Dirección</label>
-    <input formControlName="direccion" type="text" class="form-control" required>
-  </div>
-
-  <div class="row">
-    <div class="col-md-6 mb-3">
+    <div class="col-md-4 mb-3">
       <label class="form-label">CUIT</label>
-      <input formControlName="cuit" type="text" class="form-control" required>
+      <input formControlName="cuit" type="text" class="form-control" placeholder="XX-XXXXXXXX-X" required>
     </div>
-    <div class="col-md-6 mb-3">
-      <label class="form-label">Whatsapp</label>
-      <input formControlName="whatsapp" type="text" class="form-control" required>
-    </div>
-  </div>
-
-  <div class="mb-3">
-    <label class="form-label">Email</label>
-    <input formControlName="email" type="email" class="form-control" required>
   </div>
 
   <div class="row">
     <div class="col-md-6 mb-3">
-      <label class="form-label">Tipo de Contribuyente</label>
-      <select formControlName="tipoContribuyente" class="form-select" required>
-        <option value="1">Responsable Inscripto</option>
-        <option value="Monotributista">Monotributista</option>
-        <option value="Consumidor Final">Consumidor Final</option>
-        <option value="Exento">Exento</option>
-      </select>
+      <label class="form-label">Direcci&oacute;n</label>
+      <input formControlName="direccion" type="text" class="form-control" required>
     </div>
     <div class="col-md-6 mb-3">
       <label class="form-label">Provincia</label>
@@ -49,9 +27,41 @@
     </div>
   </div>
 
-  <div class="mb-3">
-    <label class="form-label">Fecha de Alta</label>
-    <input formControlName="fechaAlta" type="date" class="form-control" required>
+  <div class="row">
+    <div class="col-md-6 mb-3">
+      <label class="form-label">Whatsapp</label>
+      <input formControlName="whatsapp" type="text" class="form-control" required>
+    </div>
+    <div class="col-md-6 mb-3">
+      <label class="form-label">Email</label>
+      <input formControlName="email" type="email" class="form-control" required>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="mb-3" [class.col-md-4]="altaClienteForm.get('tipoContribuyente')?.value === 'Monotributista'" [class.col-md-6]="altaClienteForm.get('tipoContribuyente')?.value !== 'Monotributista'">
+      <label class="form-label">Tipo de Contribuyente</label>
+      <select formControlName="tipoContribuyente" class="form-select" required>
+        <option value="" disabled selected>Seleccione un tipo</option>
+        <option value="Responsable Inscripto">Responsable Inscripto</option>
+        <option value="Monotributista">Monotributista</option>
+        <option value="IVA Exento">IVA Exento</option>
+      </select>
+    </div>
+    <div class="col-md-4 mb-3" *ngIf="altaClienteForm.get('tipoContribuyente')?.value === 'Monotributista'">
+      <label class="form-label">Categor&iacute;a AFIP</label>
+      <select formControlName="subcategoriaMonotributo" class="form-select" required>
+        <option value="" disabled selected>Seleccione</option>
+        <option *ngFor="let letra of ['A','B','C','D','E','F','G','H','I','J','K']" [value]="letra">{{ letra }}</option>
+      </select>
+    </div>
+    <div class="mb-3" [class.col-md-4]="altaClienteForm.get('tipoContribuyente')?.value === 'Monotributista'" [class.col-md-6]="altaClienteForm.get('tipoContribuyente')?.value !== 'Monotributista'">
+      <label class="form-label">Categor&iacute;a Interna</label>
+      <select formControlName="categoriaInterna" class="form-select" required>
+        <option value="" disabled selected>Seleccione una categor&iacute;a</option>
+        <option *ngFor="let cat of categoriasInternas" [value]="cat">{{ cat }}</option>
+      </select>
+    </div>
   </div>
 
   <div class="text-center">

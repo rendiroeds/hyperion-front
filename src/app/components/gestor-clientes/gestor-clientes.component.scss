@@ -74,14 +74,13 @@
 
 /* Anchos de columnas de filtros */
 .filters-card .field-cuit,
-.filters-card .field-debe,
 .filters-card .field-activo {
   width: 215px;
   flex: 0 0 auto;
   max-width: 215px;
 }
 
-.filters-card .field-email,
+.filters-card .field-categoria-interna,
 .filters-card .field-tipo-contribuyente {
   width: 260px;
   flex: 0 0 auto;
@@ -184,11 +183,11 @@
 
 /* Acciones por fila (editar / eliminar) */
 .clients-table .actions-cell {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 6px;
   justify-content: center;
   align-items: center;
-  gap: 8px;
 }
 
 .clients-table .actions-cell .btn {
@@ -204,6 +203,21 @@
   color: #000;
   border: 1px solid #dcdcdc;
   transition: all 0.15s ease-in-out;
+}
+
+/* Boton mas informacion */
+.clients-table .actions-cell .btn-info {
+  grid-column: 1 / -1;
+  justify-self: center;
+  background: #fff;
+  color: #000;
+  border-color: #dcdcdc;
+
+  &:hover {
+    background: #5bc0de !important;
+    color: #fff !important;
+    border-color: #5bc0de !important;
+  }
 }
 
 /* Boton editar */
