@@ -1,75 +1,130 @@
-﻿<nav class="sidebar bg-light" style="width: 250px; height: 100vh; padding: 20px;">
-    <ul class="nav flex-column">
-      <li class="nav-item logo-item">
-        <img src="/assets/hyperion-logo.jpg" alt="Hyperion" class="menu-logo" />
-      </li>
-      <!-- Botón de Gestión de Clientes -->
-      <li class="nav-item">
-        <a
-          class="nav-link d-flex align-items-center"
-          [routerLink]="['/dashboard/gestion-clientes']"
-          routerLinkActive="active"
-        >
-          <i class="bi bi-people me-2"></i>
-          <span>Gestión de Clientes</span>
-        </a>
-      </li>
-  
-      <!-- Botón de Gestor de Usuarios -->
-      <li class="nav-item">
-        <a
-          class="nav-link d-flex align-items-center"
-          [routerLink]="['/dashboard/gestion-usuarios']"
-          routerLinkActive="active"
-        >
-          <i class="bi bi-person-circle me-2"></i>
-          <span>Gestor de Usuarios</span>
-        </a>
-      </li>
+<nav class="side-menu-container" aria-label="Menu lateral principal">
+  <!-- Lista principal navegable -->
+  <ul class="side-menu-list nav flex-column">
+    <!-- Logo -->
+    <li class="side-menu-logo-item nav-item">
+      <img src="/assets/hyperion-logo.jpg" alt="Hyperion" class="side-menu-logo" />
+    </li>
 
-      <!-- Botón de Gestor de Usuarios -->
-      <li class="nav-item">
-        <a
-          class="nav-link d-flex align-items-center"
-          [routerLink]="['/dashboard/consulta-deuda']"
-          routerLinkActive="active"
-        >
+    <!-- Modulos principales -->
+    <li class="nav-item">
+      <a
+        class="side-menu-link nav-link d-flex align-items-center"
+        [routerLink]="['/dashboard/gestion-clientes']"
+        routerLinkActive="active"
+      >
+        <i class="bi bi-people"></i>
+        <span>Gestión de Clientes</span>
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a
+        class="side-menu-link nav-link d-flex align-items-center"
+        [routerLink]="['/dashboard/gestion-usuarios']"
+        routerLinkActive="active"
+      >
+        <i class="bi bi-person-circle"></i>
+        <span>Gestor de Usuarios</span>
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a
+        class="side-menu-link nav-link d-flex align-items-center"
+        [routerLink]="['/dashboard/consulta-deuda']"
+        routerLinkActive="active"
+      >
         <i class="bi bi-bank2"></i>
-          <span>Consulta de deudas</span>
-        </a>
-      </li>
+        <span>Consulta de deudas</span>
+      </a>
+    </li>
 
-      <!-- Botón de Gestor de Usuarios -->
-      <li class="nav-item">
-        <a
-          class="nav-link d-flex align-items-center"
-          [routerLink]="['/dashboard/carga-pdf']"
-          routerLinkActive="active"
-        >
+    <li class="nav-item">
+      <a
+        class="side-menu-link nav-link d-flex align-items-center"
+        [routerLink]="['/dashboard/carga-pdf']"
+        routerLinkActive="active"
+      >
         <i class="bi bi-filetype-pdf"></i>
-          <span>Escaneo de PDFs</span>
-        </a>
-      </li>
+        <span>Escaneo de PDFs</span>
+      </a>
+    </li>
 
-      <!-- Botón de Gestor de Usuarios -->
-      <li class="nav-item">
-        <a
-          class="nav-link d-flex align-items-center"
-          [routerLink]="['/dashboard/scan-ticket']"
-          routerLinkActive="active"
-        >
+    <li class="nav-item">
+      <a
+        class="side-menu-link nav-link d-flex align-items-center"
+        [routerLink]="['/dashboard/scan-ticket']"
+        routerLinkActive="active"
+      >
         <i class="bi bi-sticky"></i>
-          <span>Escaneo de Tickets</span>
-        </a>
-      </li>
+        <span>Escaneo de Tickets</span>
+      </a>
+    </li>
 
-    </ul>
+    <!-- Modulos adicionales -->
+    <li class="nav-item">
+      <a
+        class="side-menu-link nav-link d-flex align-items-center"
+        [routerLink]="['/dashboard/honorarios-presupuestos']"
+        routerLinkActive="active"
+      >
+        <i class="bi bi-receipt"></i>
+        <span>Honorarios</span>
+      </a>
+    </li>
 
-    <div class="sidebar-footer">
-      <span class="footer-link">FAQ</span>
-      <span class="footer-separator">|</span>
-      <span class="footer-link">¿Quienes Somos?</span>
-      <span class="footer-separator">|</span>
-      <span class="footer-link">Contactanos</span>
-    </div>
-  </nav>
+    <li class="nav-item">
+      <a
+        class="side-menu-link nav-link d-flex align-items-center"
+        [routerLink]="['/dashboard/gestion-cobros']"
+        routerLinkActive="active"
+      >
+        <i class="bi bi-cash-coin"></i>
+        <span>Gestión de Cobros</span>
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a
+        class="side-menu-link nav-link d-flex align-items-center"
+        [routerLink]="['/dashboard/estado-cuenta']"
+        routerLinkActive="active"
+      >
+        <i class="bi bi-journal-check"></i>
+        <span>Estado de Cuenta</span>
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a
+        class="side-menu-link nav-link d-flex align-items-center"
+        [routerLink]="['/dashboard/caja-gastos-operativos']"
+        routerLinkActive="active"
+      >
+        <i class="bi bi-wallet2"></i>
+        <span>Arqueo de Caja</span>
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a
+        class="side-menu-link nav-link d-flex align-items-center"
+        [routerLink]="['/dashboard/reportes-dashboard']"
+        routerLinkActive="active"
+      >
+        <i class="bi bi-bar-chart-line"></i>
+        <span>Reportes</span>
+      </a>
+    </li>
+  </ul>
+
+  <!-- Footer con enlaces informativos -->
+  <div class="side-menu-footer">
+    <span class="side-menu-footer-link">FAQ</span>
+    <span class="side-menu-footer-separator">|</span>
+    <a class="side-menu-footer-link" [routerLink]="['/dashboard/quienes-somos']">¿Quienes Somos?</a>
+    <span class="side-menu-footer-separator">|</span>
+    <span class="side-menu-footer-link">Contactanos</span>
+  </div>
+</nav>

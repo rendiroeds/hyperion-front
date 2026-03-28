@@ -1,17 +1,19 @@
-/* ========== Hero bicolor y titulo ========== */
-.clients-hero {
+/* Fondo general y layout de la cabecera */
+.pdf-hero {
   background: linear-gradient(180deg, #000 0%, #000 55%, #f2f0eb 55%, #f2f0eb 100%);
   padding: 24px 32px 32px;
   min-height: 260px;
 }
 
-.hero-inner {
+/* Contenedor centrado que limita el ancho de la cabecera */
+.pdf-hero-inner {
   max-width: 835px;
   width: auto;
   margin: 0 auto;
 }
 
-.clients-title {
+/* Titulo principal de la pantalla */
+.pdf-title {
   color: #fff;
   font-size: 1.6rem;
   font-weight: 700;
@@ -19,9 +21,8 @@
   text-align: left;
 }
 
-/* ========== Tarjeta de carga ==========
-   Reutilizamos el estilo de filtros para mantener coherencia */
-.filters-card {
+/* Card principal para subir y procesar PDF */
+.pdf-upload-card {
   background: #fff;
   border: 1px solid #e4e4e4;
   border-radius: 16px;
@@ -33,12 +34,21 @@
   max-width: 100%;
 }
 
-.filters-card .form-label {
+.pdf-upload-card .form-label {
   font-weight: 600;
   color: #2f3b4c;
 }
 
-.filters-card .filter-btn {
+/* Contenedor horizontal de botones de accion */
+.pdf-upload-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Estilo comun de los botones de accion */
+.pdf-action-btn {
   border-radius: 999px;
   padding: 8px 16px;
   font-size: 0.95rem;
@@ -47,35 +57,32 @@
   width: auto;
 }
 
-.filters-card .apply-btn {
+/* Ajuste del boton de procesar */
+.pdf-process-btn {
   margin-left: 12px;
 }
 
-.upload-actions {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-.selected-file {
+/* Bloque que muestra el archivo elegido */
+.pdf-selected-file {
   margin-top: 12px;
   font-weight: 600;
   color: #2f3b4c;
 }
 
-.file-name {
+/* Nombre del archivo seleccionado */
+.pdf-file-name {
   color: #1a73e8;
 }
 
-.clear-btn {
+/* Boton para limpiar el archivo seleccionado */
+.pdf-clear-btn {
   border-radius: 50%;
   padding: 4px 8px;
   line-height: 1;
 }
 
-/* ========== Fondo inferior ========== */
-.clients-body {
+/* Fondo de la zona inferior */
+.pdf-body {
   background: #f2f0eb;
   min-height: 200px;
 }

@@ -1,92 +1,116 @@
-/* Sidebar */
-.sidebar {
+/* Contenedor principal del menu lateral */
+.side-menu-container {
   width: 250px;
   height: 100vh;
-  padding: 20px;
+  padding: 12px;
   background-color: #f8f9fa;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease-in-out;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
-.sidebar.hidden {
+/* Estado oculto del menu lateral */
+.side-menu-container.hidden {
   transform: translateX(-100%);
 }
 
-/* Nav Links */
-.nav-link {
-  color: #333;
-  padding: 10px 15px;
-  border-radius: 5px;
-  margin-bottom: 10px; /* Separación entre botones */
-  background-color: #e9ecef; /* Fondo del botón */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra del botón */
-  transition: all 0.3s ease; /* Transición para animación */
-  text-decoration: none; /* Sin subrayado */
-  display: flex;
-  align-items: center;
+/* Lista principal con scroll independiente */
+.side-menu-list {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  min-height: 0;
+  padding-right: 2px;
 }
 
-.nav-link i {
-  font-size: 1.2rem; /* Tamaño del ícono */
+/* Espaciado vertical entre items */
+.side-menu-list li {
+  margin-top: 12px;
+}
+
+/* Item del logo */
+.side-menu-logo-item {
+  margin-bottom: 0;
+}
+
+/* Logo Hyperion */
+.side-menu-logo {
+  width: 100%;
+  max-width: 180px;
+  display: block;
+  margin: 1px auto 20px;
+  padding-bottom: 0;
+}
+
+/* Enlaces principales del menu */
+.side-menu-link {
+  color: #333;
+  padding: 10px 14px;
+  border-radius: 5px;
+  margin-bottom: 0;
+  background-color: #e9ecef;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  font-size: 0.98rem;
+  line-height: 1.25;
+}
+
+/* Iconos de los enlaces */
+.side-menu-link i {
+  font-size: 1.08rem;
   margin-right: 10px;
 }
 
-.nav-link:hover {
-  background-color: #007bff; /* Color de fondo al pasar el cursor */
-  color: white; /* Texto blanco */
-  transform: translateY(-2px); /* Efecto de elevación */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra más intensa */
+/* Hover de enlaces */
+.side-menu-link:hover {
+  background-color: #007bff;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Botón Activo */
-.nav-link.active {
-  background-color: #007bff; /* Fondo azul */
-  color: white;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Más destacada */
+/* Enlace activo */
+.side-menu-link.active {
+  background-color: #007bff;
+  color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.nav-link.active:hover {
-  background-color: #0056b3; /* Color más oscuro al pasar el cursor */
+.side-menu-link.active:hover {
+  background-color: #0056b3;
   transform: translateY(-2px);
 }
- li {
-  margin-top: 10px;
- }
 
-.logo-item {
-  margin-bottom: 14px;
-}
-
-.menu-logo {
-  width: 100%;
-  max-width: 210px;
-  display: block;
-  margin: 0 auto;
-  padding-bottom: 50px;
-}
-
-/* Footer de enlaces informativos */
-.sidebar-footer {
-  margin-top: 88px;
+/* Footer informativo */
+.side-menu-footer {
+  margin-top: 6px;
   color: #1a73e8;
   font-weight: 500;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   display: flex;
-  gap: 4px;
+  gap: 0;
   flex-wrap: wrap;
+  flex-shrink: 0;
 }
 
-.footer-link {
+/* Links del footer */
+.side-menu-footer-link {
   cursor: pointer;
   color: #1a73e8;
   text-decoration: none;
 }
 
-.footer-link:hover {
+.side-menu-footer-link:hover {
   color: #000;
   text-decoration: underline;
 }
 
-.footer-separator {
+/* Separador visual del footer */
+.side-menu-footer-separator {
   color: #8a8a8a;
+  margin: 0 6px;
 }

@@ -1,18 +1,37 @@
-<div class="container my-4">
-  <h2>Escaneo y carga de Ticket Fiscal</h2>
-  <div class="mb-3">
-    <label for="fileInput" class="form-label">Seleccionar imagen de ticket</label>
-    <input id="fileInput" type="file" class="form-control" (change)="onFileSelected($event)" accept="image/*">
-    <div *ngIf="fileName">Archivo seleccionado: {{fileName}}</div>
-  </div>
-  <button class="btn btn-primary" (click)="uploadTicket()" [disabled]="!fileSelected || loading">Subir y procesar</button>
+<div class="ticket-hero">
+  <div class="ticket-hero-inner">
+    <h1 class="ticket-title">Tickets</h1>
+    <div class="ticket-upload-card">
+      <div class="row g-3 align-items-end mx-0">
+        <div class="col-auto">
+          <label class="form-label">Subir imagen del ticket</label>
+          <div class="ticket-upload-actions">
+            <label for="fileInput" class="btn btn-primary ticket-action-btn">
+              <i class="bi bi-upload"></i> Seleccionar ticket
+            </label>
+            <input #fileInput id="fileInput" type="file" class="d-none" (change)="onFileSelected($event)" accept=".png,.jpg,.jpeg,.webp,.bmp,.gif,image/png,image/jpeg,image/webp,image/bmp,image/gif">
+            <button class="btn btn-success ticket-action-btn ticket-process-btn" (click)="uploadTicket()" [disabled]="!fileSelected || loading">
+              <i class="bi bi-file-earmark-arrow-down"></i> Procesar y Descargar
+            </button>
+          </div>
+          <div *ngIf="fileName" class="ticket-selected-file d-flex align-items-center flex-wrap gap-2">
+            <span>Archivo seleccionado:</span>
+            <span class="ticket-file-name">{{ fileName }}</span>
+            <button type="button" class="btn btn-outline-danger btn-sm ticket-clear-btn" (click)="clearSelection(fileInput)" aria-label="Borrar archivo">
+              &times;
+            </button>
+          </div>
 
-  <div class="mt-3" *ngIf="loading">
-    <div class="spinner-border text-primary" role="status"><span class="visually-hidden">Procesando...</span></div>
-    <span>Procesando ticket...</span>
+          <div *ngIf="loading" class="ticket-status-msg ticket-loading-msg d-flex align-items-center gap-2">
+            <span class="spinner-border spinner-border-sm text-primary" role="status" aria-hidden="true"></span>
+            <span>Procesando ticket...</span>
+          </div>
+          <div *ngIf="errorMsg" class="ticket-status-msg ticket-error-msg">{{ errorMsg }}</div>
+          <div *ngIf="successMsg" class="ticket-status-msg ticket-success-msg">{{ successMsg }}</div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div *ngIf="errorMsg" class="alert alert-danger mt-3">{{errorMsg}}</div>
-  <div *ngIf="successMsg" class="alert alert-success mt-3">{{successMsg}}</div>
-
-  <button *ngIf="showDownloadButton" class="btn btn-success mt-2" (click)="downloadCsv()">Descargar CSV</button>
 </div>
+
+<div class="ticket-body"></div>

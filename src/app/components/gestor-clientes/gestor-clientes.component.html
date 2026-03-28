@@ -5,21 +5,26 @@
       <form [formGroup]="filtrosForm" (ngSubmit)="aplicarFiltros()">
         <div class="row g-3 align-items-end mx-0">
           <div class="col-auto">
-            <label class="form-label">Nombre</label>
-            <input type="text" class="form-control" placeholder="Nombre" formControlName="nombre">
+            <label class="form-label">Nombre / Apellido</label>
+            <input type="text" class="form-control" placeholder="Nombre o Apellido" formControlName="nombre">
           </div>
-          <div class="col-auto filter-175">
+          <div class="col-auto field-cuit">
             <label class="form-label">CUIT</label>
             <input type="text" class="form-control" placeholder="CUIT" formControlName="cuit">
           </div>
-          <div class="col-auto filter-260">
-            <label class="form-label">Email</label>
-            <input type="text" class="form-control" placeholder="Email" formControlName="email">
+          <div class="col-auto field-categoria-interna">
+            <label class="form-label">Categoría Interna</label>
+            <select class="form-select" formControlName="categoriaInterna">
+              <option value="">Seleccionar</option>
+            </select>
           </div>
-          <div class="col-auto d-flex align-items-end">
+          <div class="col-auto ms-auto d-flex align-items-end">
             <button type="button" class="btn btn-secondary filter-btn" (click)="limpiarFiltros()">Limpiar filtros</button>
           </div>
-          <div class="col-auto filter-260">
+        </div>
+
+        <div class="row g-3 align-items-end mx-0 mt-0">
+          <div class="col-auto field-tipo-contribuyente">
             <label class="form-label">Tipo de Contribuyente</label>
             <select class="form-select" formControlName="tipoContribuyente">
               <option value="">Seleccionar</option>
@@ -28,15 +33,7 @@
               </option>
             </select>
           </div>
-          <div class="col-auto filter-175">
-            <label class="form-label">Debe</label>
-            <select class="form-select" formControlName="debe">
-              <option value="">Seleccionar</option>
-              <option value="true">S&iacute;</option>
-              <option value="false">No</option>
-            </select>
-          </div>
-          <div class="col-auto filter-175">
+          <div class="col-auto field-activo">
             <label class="form-label">Activo</label>
             <select class="form-select" formControlName="activo">
               <option value="">Seleccionar</option>
@@ -44,7 +41,7 @@
               <option value="false">No</option>
             </select>
           </div>
-          <div class="col-auto d-flex align-items-end">
+          <div class="col-auto ms-auto d-flex align-items-start align-self-start apply-filters-wrapper">
             <button type="submit" class="btn btn-primary filter-btn apply-btn">Aplicar Filtros</button>
           </div>
         </div>
@@ -61,49 +58,29 @@
       <table class="table clients-table align-middle mb-0">
         <thead>
           <tr>
-            <th class="sortable" (click)="sortBy('clienteId')">
-              <span>ID</span>
-              <i class="bi" [ngClass]="{'bi-caret-up-fill': sortField==='clienteId' && sortDirection==='asc', 'bi-caret-down-fill': sortField==='clienteId' && sortDirection==='desc', 'bi-caret-down': sortField!=='clienteId'}"></i>
-            </th>
-            <th class="sortable" (click)="sortBy('nombre')">
+            <th class="sortable" (click)="sortBy('nombreCompleto')">
               <span>Nombre</span>
-              <i class="bi" [ngClass]="{'bi-caret-up-fill': sortField==='nombre' && sortDirection==='asc', 'bi-caret-down-fill': sortField==='nombre' && sortDirection==='desc', 'bi-caret-down': sortField!=='nombre'}"></i>
-            </th>
-            <th class="sortable" (click)="sortBy('apellido')">
-              <span>Apellido</span>
-              <i class="bi" [ngClass]="{'bi-caret-up-fill': sortField==='apellido' && sortDirection==='asc', 'bi-caret-down-fill': sortField==='apellido' && sortDirection==='desc', 'bi-caret-down': sortField!=='apellido'}"></i>
-            </th>
-            <th class="sortable" (click)="sortBy('direccion')">
-              <span>Direcci&oacute;n</span>
-              <i class="bi" [ngClass]="{'bi-caret-up-fill': sortField==='direccion' && sortDirection==='asc', 'bi-caret-down-fill': sortField==='direccion' && sortDirection==='desc', 'bi-caret-down': sortField!=='direccion'}"></i>
+              <i class="bi" [ngClass]="{'bi-caret-up-fill': sortField==='nombreCompleto' && sortDirection==='asc', 'bi-caret-down-fill': sortField==='nombreCompleto' && sortDirection==='desc', 'bi-caret-down': sortField!=='nombreCompleto'}"></i>
             </th>
             <th class="sortable" (click)="sortBy('cuit')">
               <span>CUIT</span>
               <i class="bi" [ngClass]="{'bi-caret-up-fill': sortField==='cuit' && sortDirection==='asc', 'bi-caret-down-fill': sortField==='cuit' && sortDirection==='desc', 'bi-caret-down': sortField!=='cuit'}"></i>
             </th>
-            <th class="sortable" (click)="sortBy('whatsapp')">
-              <span>WhatsApp</span>
-              <i class="bi" [ngClass]="{'bi-caret-up-fill': sortField==='whatsapp' && sortDirection==='asc', 'bi-caret-down-fill': sortField==='whatsapp' && sortDirection==='desc', 'bi-caret-down': sortField!=='whatsapp'}"></i>
+            <th class="sortable" (click)="sortBy('contacto')">
+              <span>Contacto</span>
+              <i class="bi" [ngClass]="{'bi-caret-up-fill': sortField==='contacto' && sortDirection==='asc', 'bi-caret-down-fill': sortField==='contacto' && sortDirection==='desc', 'bi-caret-down': sortField!=='contacto'}"></i>
             </th>
-            <th class="sortable" (click)="sortBy('email')">
-              <span>Email</span>
-              <i class="bi" [ngClass]="{'bi-caret-up-fill': sortField==='email' && sortDirection==='asc', 'bi-caret-down-fill': sortField==='email' && sortDirection==='desc', 'bi-caret-down': sortField!=='email'}"></i>
+            <th class="sortable" (click)="sortBy('categoriaInterna')">
+              <span>Categor&iacute;a Interna</span>
+              <i class="bi" [ngClass]="{'bi-caret-up-fill': sortField==='categoriaInterna' && sortDirection==='asc', 'bi-caret-down-fill': sortField==='categoriaInterna' && sortDirection==='desc', 'bi-caret-down': sortField!=='categoriaInterna'}"></i>
             </th>
             <th class="sortable" (click)="sortBy('tipoContribuyente')">
               <span>Tipo Contribuyente</span>
               <i class="bi" [ngClass]="{'bi-caret-up-fill': sortField==='tipoContribuyente' && sortDirection==='asc', 'bi-caret-down-fill': sortField==='tipoContribuyente' && sortDirection==='desc', 'bi-caret-down': sortField!=='tipoContribuyente'}"></i>
             </th>
-            <th class="sortable" (click)="sortBy('provincia')">
-              <span>Provincia</span>
-              <i class="bi" [ngClass]="{'bi-caret-up-fill': sortField==='provincia' && sortDirection==='asc', 'bi-caret-down-fill': sortField==='provincia' && sortDirection==='desc', 'bi-caret-down': sortField!=='provincia'}"></i>
-            </th>
             <th class="sortable" (click)="sortBy('fechaAlta')">
               <span>Fecha Alta</span>
               <i class="bi" [ngClass]="{'bi-caret-up-fill': sortField==='fechaAlta' && sortDirection==='asc', 'bi-caret-down-fill': sortField==='fechaAlta' && sortDirection==='desc', 'bi-caret-down': sortField!=='fechaAlta'}"></i>
-            </th>
-            <th class="sortable" (click)="sortBy('debe')">
-              <span>Debe</span>
-              <i class="bi" [ngClass]="{'bi-caret-up-fill': sortField==='debe' && sortDirection==='asc', 'bi-caret-down-fill': sortField==='debe' && sortDirection==='desc', 'bi-caret-down': sortField!=='debe'}"></i>
             </th>
             <th class="sortable" (click)="sortBy('estado')">
               <span>Estado</span>
@@ -114,27 +91,24 @@
         </thead>
         <tbody>
           <tr *ngFor="let cliente of clientesFiltrados">
-            <td>{{ cliente.clienteId }}</td>
-            <td>{{ cliente.nombre }}</td>
-            <td>{{ cliente.apellido }}</td>
-            <td>{{ cliente.direccion }}</td>
-            <td>{{ cliente.cuit }}</td>
-            <td>{{ cliente.whatsapp }}</td>
-            <td>{{ cliente.email }}</td>
-            <td>{{ cliente.tipoContribuyente?.nombre }}</td>
-            <td>{{ cliente.provincia?.nombre }}</td>
-            <td>{{ cliente.fechaAlta | date:'dd/MM/yyyy' }}</td>
+            <td>{{ cliente.apellido | uppercase }}, {{ cliente.nombre }}</td>
+            <td>{{ formatCuit(cliente.cuit) }}</td>
             <td>
-              <span class="badge" [ngClass]="{'bg-danger': cliente.debe, 'bg-success': !cliente.debe}">
-                {{ cliente.debe ? 'S\u00ed' : 'No' }}
-              </span>
+              <div>{{ cliente.email }}</div>
+              <div>{{ cliente.telefono || cliente.whatsapp }}</div>
             </td>
+            <td>{{ cliente.categoriaInterna }}</td>
+            <td>{{ cliente.tipoContribuyente?.nombre }}</td>
+            <td>{{ cliente.fechaAlta | date:'dd/MM/yyyy' }}</td>
             <td>
               <span class="badge" [ngClass]="{'bg-success': cliente.estado, 'bg-secondary': !cliente.estado}">
                 {{ cliente.estado ? 'Activo' : 'Inactivo' }}
               </span>
             </td>
           <td class="text-center actions-cell">
+            <button class="btn btn-info btn-sm" (click)="verMasInformacion(cliente)" title="M&aacute;s informaci&oacute;n" aria-label="M&aacute;s informaci&oacute;n">
+              <i class="bi bi-search"></i>
+            </button>
             <button class="btn btn-warning btn-sm" (click)="editarCliente(cliente)" title="Editar" aria-label="Editar">
               <i class="bi bi-pencil"></i>
             </button>

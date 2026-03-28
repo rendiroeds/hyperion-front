@@ -28,10 +28,9 @@ export class GestorClientesComponent implements OnInit {
       nombre: [''],
       dni: [''],
       cuit: [''],
+      categoriaInterna: [''],
       tipoContribuyente: [''],
       telefono: [''],
-      email: [''],
-      debe: [''],
       activo: [''],
     });
   }
@@ -66,19 +65,19 @@ export class GestorClientesComponent implements OnInit {
 
   aplicarFiltros() { 
     const filtros = this.filtrosForm.value;
-    const nombreBuscado = filtros.nombre.toLowerCase().trim();
+    const nombreBuscado = (filtros.nombre || '').toLowerCase().trim();
+    const cuitFiltro = (filtros.cuit || '').replace(/-/g, '');
   
     this.clientesFiltrados = this.clientes.filter((cliente) => {
-      const nombreCompleto = `${cliente.nombre} ${cliente.apellido}`.toLowerCase();
+      const nombreCompleto = `${cliente.nombre || ''} ${cliente.apellido || ''}`.toLowerCase();
   
       return (
         (!filtros.nombre || nombreCompleto.includes(nombreBuscado)) &&
-        (!filtros.dni || cliente.dni.includes(filtros.dni)) &&
-        (!filtros.cuit || cliente.cuit.includes(filtros.cuit)) &&
-        (!filtros.tipoContribuyente || cliente.tipoContribuyente.nombre === filtros.tipoContribuyente) &&
-        (!filtros.telefono || cliente.telefono.includes(filtros.telefono)) &&
-        (!filtros.email || cliente.email?.includes(filtros.email)) && 
-        (filtros.debe === '' || cliente.debe === (filtros.debe === 'true')) &&
+        (!filtros.dni || cliente.dni?.includes(filtros.dni)) &&
+        (!cuitFiltro || (cliente.cuit || '').replace(/-/g, '').includes(cuitFiltro)) &&
+        (!filtros.categoriaInterna || cliente.categoriaInterna === filtros.categoriaInterna) &&
+        (!filtros.tipoContribuyente || cliente.tipoContribuyente?.nombre === filtros.tipoContribuyente) &&
+        (!filtros.telefono || cliente.telefono?.includes(filtros.telefono)) &&
         (filtros.activo === '' || cliente.estado === (filtros.activo === 'true'))
       );
     });
@@ -119,22 +118,16 @@ export class GestorClientesComponent implements OnInit {
 
   private getFieldValue(item: any, field: string): any {
     switch (field) {
-      case 'nombre':
-      case 'apellido':
-      case 'direccion':
+      case 'nombreCompleto':
+        return `${(item.apellido || '').toUpperCase()}, ${item.nombre || ''}`;
       case 'cuit':
-      case 'whatsapp':
-      case 'email':
       case 'fechaAlta':
+      case 'categoriaInterna':
         return item[field];
-      case 'clienteId':
-        return item.clienteId;
+      case 'contacto':
+        return `${item.email || ''} ${item.telefono || item.whatsapp || ''}`;
       case 'tipoContribuyente':
         return item.tipoContribuyente?.nombre;
-      case 'provincia':
-        return item.provincia?.nombre;
-      case 'debe':
-        return item.debe;
       case 'estado':
         return item.estado;
       default:
@@ -151,31 +144,21 @@ export class GestorClientesComponent implements OnInit {
       return;
     }
     const headers = [
-      'ID',
       'Nombre',
-      'Apellido',
-      'Dirección',
       'CUIT',
-      'WhatsApp',
-      'Email',
+      'Contacto',
+      'Categoría Interna',
       'Tipo Contribuyente',
-      'Provincia',
       'Fecha Alta',
-      'Debe',
       'Estado'
     ];
     const rows = this.clientesFiltrados.map((c) => [
-      c.clienteId ?? '',
-      c.nombre ?? '',
-      c.apellido ?? '',
-      c.direccion ?? '',
-      c.cuit ?? '',
-      c.whatsapp ?? '',
-      c.email ?? '',
+      `${(c.apellido || '').toUpperCase()}, ${c.nombre || ''}`,
+      this.formatCuit(c.cuit),
+      `${c.email || ''} / ${c.telefono || c.whatsapp || ''}`,
+      c.categoriaInterna ?? '',
       c.tipoContribuyente?.nombre ?? '',
-      c.provincia?.nombre ?? '',
       c.fechaAlta ?? '',
-      c.debe ? 'Sí' : 'No',
       c.estado ? 'Activo' : 'Inactivo',
     ]);
 
@@ -198,10 +181,9 @@ export class GestorClientesComponent implements OnInit {
       nombre: '',
       dni: '',
       cuit: '',
+      categoriaInterna: '',
       tipoContribuyente: '',
       telefono: '',
-      email: '',
-      debe: '',
       activo: '',
     });
     this.clientesFiltrados = this.clientes;
@@ -209,7 +191,8 @@ export class GestorClientesComponent implements OnInit {
 
   abrirModalAltaCliente() {
     const dialogRef = this.dialog.open(AltaClienteModalComponent, {
-      width: '500px',
+      width: '1000px',
+      maxWidth: '100vw',
     });
 
     dialogRef.afterClosed().subscribe((nuevoCliente) => {
@@ -217,6 +200,17 @@ export class GestorClientesComponent implements OnInit {
         this.obtenerClientes();
       }
     });
+  }
+
+  formatCuit(cuit: string): string {
+    if (!cuit) return '';
+    const cleaned = String(cuit).replace(/\D/g, '').padStart(11, '0');
+    return `${cleaned.substring(0, 2)}-${cleaned.substring(2, 10)}-${cleaned.substring(10, 11)}`;
+  }
+
+  verMasInformacion(cliente: any) {
+    // TODO: implementar lógica para ver más información
+    console.log('Ver más info del cliente:', cliente);
   }
 
   editarCliente(cliente: any) {

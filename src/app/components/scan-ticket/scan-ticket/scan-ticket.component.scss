@@ -1,0 +1,124 @@
+/* Fondo general y layout de la cabecera */
+.ticket-hero {
+  background: linear-gradient(180deg, #000 0%, #000 55%, #f2f0eb 55%, #f2f0eb 100%);
+  padding: 24px 32px 32px;
+  min-height: 260px;
+}
+
+/* Contenedor centrado que limita el ancho de la cabecera */
+.ticket-hero-inner {
+  max-width: 835px;
+  width: auto;
+  margin: 0 auto;
+}
+
+/* Titulo principal de la pantalla */
+.ticket-title {
+  color: #fff;
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin: 8px 0 16px;
+  text-align: left;
+}
+
+/* Card principal para subir y procesar ticket */
+.ticket-upload-card {
+  background: #fff;
+  border: 1px solid #e4e4e4;
+  border-radius: 16px;
+  padding: 16px 18px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  margin-top: 32px;
+  display: inline-block;
+  width: 438px;
+  max-width: 438px;
+}
+
+.ticket-upload-card .form-label {
+  font-weight: 600;
+  color: #2f3b4c;
+}
+
+/* Columna interna fija para alinear controles */
+.ticket-upload-card .col-auto {
+  width: 400px;
+  max-width: 400px;
+}
+
+/* Contenedor horizontal de botones de accion */
+.ticket-upload-actions {
+  display: flex;
+  align-items: center;
+  width: 384px;
+  gap: 12px;
+  margin-left: auto;
+  justify-content: flex-end;
+}
+
+/* Estilo comun de los botones de accion */
+.ticket-action-btn {
+  border-radius: 999px;
+  padding: 8px 16px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+  width: auto;
+}
+
+/* Boton seleccionar ticket */
+.ticket-upload-actions label.ticket-action-btn {
+  margin-right: 0;
+  flex-shrink: 0;
+}
+
+/* Boton procesar y descargar */
+.ticket-process-btn {
+  margin-left: 12px;
+  flex-shrink: 0;
+}
+
+/* Bloque que muestra el archivo elegido */
+.ticket-selected-file {
+  margin-top: 12px;
+  font-weight: 600;
+  color: #2f3b4c;
+}
+
+/* Nombre del archivo seleccionado */
+.ticket-file-name {
+  color: #1a73e8;
+}
+
+/* Boton para limpiar el archivo seleccionado */
+.ticket-clear-btn {
+  border-radius: 50%;
+  padding: 4px 8px;
+  line-height: 1;
+}
+
+/* Mensajes de estado (loading, error, success) */
+.ticket-status-msg {
+  margin-top: 12px;
+  font-weight: 600;
+}
+
+/* Color del mensaje de carga */
+.ticket-loading-msg {
+  color: #2f3b4c;
+}
+
+/* Color del mensaje de error */
+.ticket-error-msg {
+  color: #dc3545;
+}
+
+/* Color del mensaje de exito */
+.ticket-success-msg {
+  color: #198754;
+}
+
+/* Fondo de la zona inferior */
+.ticket-body {
+  background: #f2f0eb;
+  min-height: 200px;
+}
